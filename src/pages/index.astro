@@ -1,5 +1,7 @@
 ---
 import "../styles/global.css";
+
+const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, "")}`;
 ---
 
 <html lang="ru">
@@ -121,7 +123,7 @@ import "../styles/global.css";
           <article class="history-copy" id="history">
             <p class="section-kicker">О месте</p>
             <h2>История,<br />длиною в 90 лет</h2>
-            <img class="history-stamp" src="/images/decor/history-stamp.png" alt="" loading="lazy" />
+            <img class="history-stamp" src={asset("/images/decor/history-stamp.png")} alt="" loading="lazy" />
             <p>
               Гремячинский рыбзавод основан в 1933 году. Здесь трудились
               поколения рыбаков, создавая традиции промысла на Байкале.
@@ -131,7 +133,7 @@ import "../styles/global.css";
               гостями.
             </p>
             <a class="button button-primary" href="#history">Читать историю <span aria-hidden="true">→</span></a>
-            <img class="history-boat-sketch" src="/images/decor/history-boat-original.png" alt="" loading="lazy" />
+            <img class="history-boat-sketch" src={asset("/images/decor/history-boat-original.png")} alt="" loading="lazy" />
             <div class="history-timeline" aria-label="Ключевые даты истории">
               <div>
                 <strong>1933</strong>
@@ -154,7 +156,7 @@ import "../styles/global.css";
           </figure>
           <div class="history-side-photos">
             <figure class="history-polaroid history-polaroid-top">
-              <img class="history-tape" src="/images/decor/history-tape.png" alt="" loading="lazy" />
+              <img class="history-tape" src={asset("/images/decor/history-tape.png")} alt="" loading="lazy" />
               <div class="history-photo small-one"></div>
               <figcaption>Промысел на Байкале, 1956</figcaption>
             </figure>
@@ -325,61 +327,61 @@ import "../styles/global.css";
           <button class="gallery-arrow gallery-arrow-left" type="button" aria-label="Предыдущее фото" data-gallery-prev>‹</button>
 
           <div class="gallery-track">
-            <article class="gallery-card" data-gallery-card style="--image: url('/images/gallery/gallery-01.jpg')">
+            <article class="gallery-card" data-gallery-card style={`--image: url('${asset("/images/gallery/gallery-01.jpg")}')`}>
               <div class="gallery-caption">
                 <h3>Берег Байкала</h3>
                 <p>Лето, 2024</p>
               </div>
             </article>
-            <article class="gallery-card" data-gallery-card style="--image: url('/images/gallery/gallery-02.jpg')">
+            <article class="gallery-card" data-gallery-card style={`--image: url('${asset("/images/gallery/gallery-02.jpg")}')`}>
               <div class="gallery-caption">
                 <h3>Вид на Байкал</h3>
                 <p>Гремячинск, 2024</p>
               </div>
             </article>
-            <article class="gallery-card" data-gallery-card style="--image: url('/images/gallery/gallery-03.jpg')">
+            <article class="gallery-card" data-gallery-card style={`--image: url('${asset("/images/gallery/gallery-03.jpg")}')`}>
               <div class="gallery-caption">
                 <h3>Горный воздух</h3>
                 <p>Осень, 2024</p>
               </div>
             </article>
-            <article class="gallery-card" data-gallery-card style="--image: url('/images/gallery/gallery-04.jpg')">
+            <article class="gallery-card" data-gallery-card style={`--image: url('${asset("/images/gallery/gallery-04.jpg")}')`}>
               <div class="gallery-caption">
                 <h3>Тихий вечер</h3>
                 <p>Закат, 2024</p>
               </div>
             </article>
-            <article class="gallery-card" data-gallery-card style="--image: url('/images/gallery/gallery-05.jpg')">
+            <article class="gallery-card" data-gallery-card style={`--image: url('${asset("/images/gallery/gallery-05.jpg")}')`}>
               <div class="gallery-caption">
                 <h3>Сосны у воды</h3>
                 <p>Берег, 2024</p>
               </div>
             </article>
-            <article class="gallery-card" data-gallery-card style="--image: url('/images/gallery/gallery-06.jpg')">
+            <article class="gallery-card" data-gallery-card style={`--image: url('${asset("/images/gallery/gallery-06.jpg")}')`}>
               <div class="gallery-caption">
                 <h3>История места</h3>
                 <p>Архив, 2024</p>
               </div>
             </article>
-            <article class="gallery-card" data-gallery-card style="--image: url('/images/gallery/gallery-07.jpg')">
+            <article class="gallery-card" data-gallery-card style={`--image: url('${asset("/images/gallery/gallery-07.jpg")}')`}>
               <div class="gallery-caption">
                 <h3>Старый причал</h3>
                 <p>Гремячинск, 2024</p>
               </div>
             </article>
-            <article class="gallery-card" data-gallery-card style="--image: url('/images/gallery/gallery-08.jpg')">
+            <article class="gallery-card" data-gallery-card style={`--image: url('${asset("/images/gallery/gallery-08.jpg")}')`}>
               <div class="gallery-caption">
                 <h3>Рыбацкая лодка</h3>
                 <p>Байкал, 2024</p>
               </div>
             </article>
-            <article class="gallery-card" data-gallery-card style="--image: url('/images/gallery/gallery-09.jpg')">
+            <article class="gallery-card" data-gallery-card style={`--image: url('${asset("/images/gallery/gallery-09.jpg")}')`}>
               <div class="gallery-caption">
                 <h3>Люди Прибайкалья</h3>
                 <p>Традиции, 2024</p>
               </div>
             </article>
-            <article class="gallery-card" data-gallery-card style="--image: url('/images/gallery/gallery-10.jpg')">
+            <article class="gallery-card" data-gallery-card style={`--image: url('${asset("/images/gallery/gallery-10.jpg")}')`}>
               <div class="gallery-caption">
                 <h3>Большая вода</h3>
                 <p>Байкал, 2024</p>
