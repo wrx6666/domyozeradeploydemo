@@ -1,0 +1,665 @@
+---
+import "../styles/global.css";
+---
+
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Моё Прибайкалье</title>
+  </head>
+  <body>
+    <header class="sticky-header" aria-label="Липкая навигация">
+      <a class="logo" href="#top" aria-label="Моё Прибайкалье">
+        <span class="logo-image" aria-hidden="true"></span>
+      </a>
+
+      <nav class="nav" aria-label="Липкая навигация">
+        <a href="#about">О месте</a>
+        <a href="#services">Услуги</a>
+        <a href="#history">История</a>
+        <a href="#events">Афиша</a>
+        <a href="#press">Пресса о нас</a>
+        <a href="#gallery">Галерея</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="booking-button" href="#booking-modal" data-booking-open>Забронировать</a>
+        <button class="menu-button" type="button" aria-label="Открыть меню" aria-expanded="false" data-menu-open>
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <main class="site-shell">
+      <section class="hero" id="top">
+        <header class="header">
+          <a class="logo" href="#top" aria-label="Моё Прибайкалье">
+            <span class="logo-image" aria-hidden="true"></span>
+          </a>
+
+          <nav class="nav" aria-label="Основная навигация">
+            <a href="#about">О месте</a>
+            <a href="#services">Услуги</a>
+            <a href="#history">История</a>
+            <a href="#events">Афиша</a>
+            <a href="#press">Пресса о нас</a>
+            <a href="#gallery">Галерея</a>
+            <a href="#contacts">Контакты</a>
+          </nav>
+
+          <div class="header-actions">
+            <a class="booking-button" href="#booking-modal" data-booking-open>Забронировать</a>
+            <button class="menu-button" type="button" aria-label="Открыть меню" aria-expanded="false" data-menu-open>
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+        </header>
+
+        <div class="hero-content">
+          <p class="eyebrow">Культурно-туристический центр</p>
+          <h1>
+            Место,<br />
+            где живет<br />
+            <em>душа Прибайкалья</em>
+          </h1>
+          <p class="hero-lead">
+            Культурно-туристический центр<br />
+            на территории исторического Гремячинского<br />
+            рыбзавода на берегу великого озера.
+          </p>
+          <div class="hero-buttons">
+            <a class="button button-booking-mobile" href="#booking-modal" data-booking-open>Забронировать</a>
+            <a class="button button-primary" href="#about">Узнать больше</a>
+            <a class="button button-secondary" href="#services">Наши услуги</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="services-strip" id="services" aria-label="Услуги центра">
+        <div class="service-item service-stay">
+          <span class="service-icon" aria-hidden="true"></span>
+          <strong>Проживание</strong>
+          <span>Уютные номера<br />с видом на Байкал</span>
+        </div>
+        <div class="service-item service-bath">
+          <span class="service-icon" aria-hidden="true"></span>
+          <strong>Бани</strong>
+          <span>Настоящие байкальские<br />бани на дровах</span>
+        </div>
+        <div class="service-item service-food">
+          <span class="service-icon" aria-hidden="true"></span>
+          <strong>Питание</strong>
+          <span>Кафе с локальной кухней<br />и свежей рыбой</span>
+        </div>
+        <div class="service-item service-events">
+          <span class="service-icon" aria-hidden="true"></span>
+          <strong>Мероприятия</strong>
+          <span>Корпоративы, праздники,<br />мастер-классы</span>
+        </div>
+        <div class="service-item service-tours">
+          <span class="service-icon" aria-hidden="true"></span>
+          <strong>Экскурсии</strong>
+          <span>Туры, природа<br />и легенды края</span>
+        </div>
+        <div class="service-item service-gifts">
+          <span class="service-icon" aria-hidden="true"></span>
+          <strong>Сувениры</strong>
+          <span>Байкальские подарки<br />и изделия ручной работы</span>
+        </div>
+      </section>
+
+      <section class="history-preview" id="about">
+        <div class="shoreline" aria-hidden="true"></div>
+        <div class="section-grid history-story">
+          <article class="history-copy" id="history">
+            <p class="section-kicker">О месте</p>
+            <h2>История,<br />длиною в 90 лет</h2>
+            <img class="history-stamp" src="/images/decor/history-stamp.png" alt="" loading="lazy" />
+            <p>
+              Гремячинский рыбзавод основан в 1933 году. Здесь трудились
+              поколения рыбаков, создавая традиции промысла на Байкале.
+            </p>
+            <p>
+              Сегодня мы бережно сохраняем историю места и делимся ею с нашими
+              гостями.
+            </p>
+            <a class="button button-primary" href="#history">Читать историю <span aria-hidden="true">→</span></a>
+            <img class="history-boat-sketch" src="/images/decor/history-boat-original.png" alt="" loading="lazy" />
+            <div class="history-timeline" aria-label="Ключевые даты истории">
+              <div>
+                <strong>1933</strong>
+                <span>Основан<br />рыболовецкий участок</span>
+              </div>
+              <div>
+                <strong>1956</strong>
+                <span>Первые<br />семейные артели</span>
+              </div>
+              <div>
+                <strong>2024</strong>
+                <span>Место стало<br />туристическим комплексом</span>
+              </div>
+            </div>
+          </article>
+
+          <figure class="history-main-card">
+            <div class="history-main-photo" aria-label="Старый деревянный дом у Байкала"></div>
+            <figcaption>Рыбацкая изба. Гремячинск, 1948</figcaption>
+          </figure>
+          <div class="history-side-photos">
+            <figure class="history-polaroid history-polaroid-top">
+              <img class="history-tape" src="/images/decor/history-tape.png" alt="" loading="lazy" />
+              <div class="history-photo small-one"></div>
+              <figcaption>Промысел на Байкале, 1956</figcaption>
+            </figure>
+            <figure class="history-polaroid history-polaroid-bottom">
+              <div class="history-photo small-two"></div>
+              <figcaption>Коллектив рыбзавода, 1962</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="press-section" id="press">
+        <div class="press-heading">
+          <div>
+            <p>Пресса о нас</p>
+            <h2>Новости</h2>
+          </div>
+        </div>
+
+        <div class="press-grid">
+          <article class="featured-news">
+            <span class="tag">СМИ</span>
+            <h3>Интервью.<br />Бурятия</h3>
+            <p>Большой разговор о туристическом центре, истории места и людях, которые сохраняют традиции Прибайкалья.</p>
+            <div class="news-meta">
+              <span>21 октября 2025</span>
+              <span>Телеканал Бурятия</span>
+            </div>
+            <a href="#press">Читать статью <span aria-hidden="true">→</span></a>
+          </article>
+
+          <div class="news-list">
+            <article class="news-card">
+              <span class="tag">Новости</span>
+              <h3>
+                Жительница Бурятии прошла в финал федерального проекта
+                «Мастер гостеприимства»
+              </h3>
+              <div class="news-meta">
+                <span>18 октября 2025</span>
+                <span>Восток-Телеинформ</span>
+              </div>
+              <a href="#press">Читать статью <span aria-hidden="true">→</span></a>
+            </article>
+
+            <article class="news-card">
+              <span class="tag">Новости</span>
+              <h3>
+                Участников проекта «Защитники Отечества» наградили
+                благодарственными письмами Главы Бурятии
+              </h3>
+              <div class="news-meta">
+                <span>12 октября 2025</span>
+                <span>Правительство Бурятии</span>
+              </div>
+              <a href="#press">Читать статью <span aria-hidden="true">→</span></a>
+            </article>
+
+            <article class="news-card news-card-wide">
+              <span class="tag">Публикации</span>
+              <h3>Как Гремячинский рыбзавод становится новой точкой притяжения на Байкале</h3>
+              <p>Короткая подборка материалов о развитии территории, гостевых маршрутах и будущих событиях центра.</p>
+              <div class="news-meta">
+                <span>5 октября 2025</span>
+                <span>Моё Прибайкалье</span>
+              </div>
+              <a href="#press">Читать статью <span aria-hidden="true">→</span></a>
+            </article>
+          </div>
+        </div>
+
+        <div class="publications-line">
+          <span class="publications-icon" aria-hidden="true"></span>
+          <div class="publications-copy">
+            <h3>СМИ о нас</h3>
+            <p>Все публикации о культурно-туристическом центре в одном месте</p>
+          </div>
+          <a href="#press">Смотреть все публикации <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+
+      <section class="events-section" id="events">
+        <div class="section-heading events-heading">
+          <span class="sprig sprig-left" aria-hidden="true"></span>
+          <div>
+            <h2>Мероприятия</h2>
+            <p>Ближайшие события центра</p>
+            <span class="events-heading__divider" aria-hidden="true"></span>
+          </div>
+          <span class="sprig sprig-right" aria-hidden="true"></span>
+        </div>
+
+        <div class="events-grid">
+          <article class="event-card">
+            <div class="event-image event-image-zero">
+              <time datetime="2026-05-17"><b>17</b><span>мая</span></time>
+            </div>
+            <div class="event-body">
+              <h3>Прогулка по берегу Байкала</h3>
+              <p>Спокойный маршрут вдоль воды, рассказы о природе и лучших местах для семейных фотографий.</p>
+              <div class="event-time"><span aria-hidden="true"></span>10:00 - 12:00</div>
+              <a href="#events">Подробнее <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="event-card">
+            <div class="event-image event-image-one">
+              <time datetime="2026-05-24"><b>24</b><span>мая</span></time>
+            </div>
+            <div class="event-body">
+              <h3>Экскурсия по рыбацкому стану</h3>
+              <p>Погружение в историю промысла, рассказ о традициях и быте рыбаков.</p>
+              <div class="event-time"><span aria-hidden="true"></span>12:00 - 14:00</div>
+              <a href="#events">Подробнее <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="event-card">
+            <div class="event-image event-image-two">
+              <time datetime="2026-06-07"><b>07</b><span>июня</span></time>
+            </div>
+            <div class="event-body">
+              <h3>Вечер у Байкала</h3>
+              <p>Атмосферный вечер с живой музыкой, байкальскими историями и чаем на травах.</p>
+              <div class="event-time"><span aria-hidden="true"></span>18:00 - 21:00</div>
+              <a href="#events">Подробнее <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="event-card">
+            <div class="event-image event-image-three">
+              <time datetime="2026-06-21"><b>21</b><span>июня</span></time>
+            </div>
+            <div class="event-body">
+              <h3>Мастер-класс традиционной кухни</h3>
+              <p>Готовим блюда старинной сибирской кухни из местных продуктов.</p>
+              <div class="event-time"><span aria-hidden="true"></span>15:00 - 17:00</div>
+              <a href="#events">Подробнее <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="event-card">
+            <div class="event-image event-image-four">
+              <time datetime="2026-07-05"><b>05</b><span>июля</span></time>
+            </div>
+            <div class="event-body">
+              <h3>Семейный день на Байкале</h3>
+              <p>Игры, прогулки, горячий чай и небольшие мастер-классы для гостей всех возрастов.</p>
+              <div class="event-time"><span aria-hidden="true"></span>11:00 - 16:00</div>
+              <a href="#events">Подробнее <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+        </div>
+
+        <a class="events-all" href="#events">Все мероприятия <span aria-hidden="true">→</span></a>
+      </section>
+
+      <section class="gallery-section" id="gallery">
+        <div class="gallery-title">
+          <span class="gallery-icon" aria-hidden="true"></span>
+          <div>
+            <h2>Фотогалерея</h2>
+            <p>Красота Байкала в объективе наших гостей</p>
+          </div>
+        </div>
+
+        <div class="gallery-carousel" aria-label="Фотогалерея" data-gallery>
+          <button class="gallery-arrow gallery-arrow-left" type="button" aria-label="Предыдущее фото" data-gallery-prev>‹</button>
+
+          <div class="gallery-track">
+            <article class="gallery-card" data-gallery-card style="--image: url('/images/gallery/gallery-01.jpg')">
+              <div class="gallery-caption">
+                <h3>Берег Байкала</h3>
+                <p>Лето, 2024</p>
+              </div>
+            </article>
+            <article class="gallery-card" data-gallery-card style="--image: url('/images/gallery/gallery-02.jpg')">
+              <div class="gallery-caption">
+                <h3>Вид на Байкал</h3>
+                <p>Гремячинск, 2024</p>
+              </div>
+            </article>
+            <article class="gallery-card" data-gallery-card style="--image: url('/images/gallery/gallery-03.jpg')">
+              <div class="gallery-caption">
+                <h3>Горный воздух</h3>
+                <p>Осень, 2024</p>
+              </div>
+            </article>
+            <article class="gallery-card" data-gallery-card style="--image: url('/images/gallery/gallery-04.jpg')">
+              <div class="gallery-caption">
+                <h3>Тихий вечер</h3>
+                <p>Закат, 2024</p>
+              </div>
+            </article>
+            <article class="gallery-card" data-gallery-card style="--image: url('/images/gallery/gallery-05.jpg')">
+              <div class="gallery-caption">
+                <h3>Сосны у воды</h3>
+                <p>Берег, 2024</p>
+              </div>
+            </article>
+            <article class="gallery-card" data-gallery-card style="--image: url('/images/gallery/gallery-06.jpg')">
+              <div class="gallery-caption">
+                <h3>История места</h3>
+                <p>Архив, 2024</p>
+              </div>
+            </article>
+            <article class="gallery-card" data-gallery-card style="--image: url('/images/gallery/gallery-07.jpg')">
+              <div class="gallery-caption">
+                <h3>Старый причал</h3>
+                <p>Гремячинск, 2024</p>
+              </div>
+            </article>
+            <article class="gallery-card" data-gallery-card style="--image: url('/images/gallery/gallery-08.jpg')">
+              <div class="gallery-caption">
+                <h3>Рыбацкая лодка</h3>
+                <p>Байкал, 2024</p>
+              </div>
+            </article>
+            <article class="gallery-card" data-gallery-card style="--image: url('/images/gallery/gallery-09.jpg')">
+              <div class="gallery-caption">
+                <h3>Люди Прибайкалья</h3>
+                <p>Традиции, 2024</p>
+              </div>
+            </article>
+            <article class="gallery-card" data-gallery-card style="--image: url('/images/gallery/gallery-10.jpg')">
+              <div class="gallery-caption">
+                <h3>Большая вода</h3>
+                <p>Байкал, 2024</p>
+              </div>
+            </article>
+          </div>
+
+          <button class="gallery-arrow gallery-arrow-right" type="button" aria-label="Следующее фото" data-gallery-next>›</button>
+        </div>
+
+        <div class="gallery-dots" aria-label="Выбор фото">
+          <button class="active" type="button" aria-label="Фото 1" data-gallery-dot></button>
+          <button type="button" aria-label="Фото 2" data-gallery-dot></button>
+          <button type="button" aria-label="Фото 3" data-gallery-dot></button>
+          <button type="button" aria-label="Фото 4" data-gallery-dot></button>
+          <button type="button" aria-label="Фото 5" data-gallery-dot></button>
+          <button type="button" aria-label="Фото 6" data-gallery-dot></button>
+          <button type="button" aria-label="Фото 7" data-gallery-dot></button>
+          <button type="button" aria-label="Фото 8" data-gallery-dot></button>
+          <button type="button" aria-label="Фото 9" data-gallery-dot></button>
+          <button type="button" aria-label="Фото 10" data-gallery-dot></button>
+        </div>
+      </section>
+
+      <section class="booking-cta" id="booking">
+        <div class="booking-ornament" aria-hidden="true"></div>
+        <div class="booking-content">
+          <h2>
+            Приезжайте за впечатлениями.<br />
+            Оставайтесь в сердце.
+          </h2>
+          <a class="button button-primary" href="#booking-modal" data-booking-open>Забронировать проживание</a>
+        </div>
+      </section>
+
+      <footer class="footer" id="contacts">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a class="logo" href="#top" aria-label="Моё Прибайкалье">
+              <span class="logo-image" aria-hidden="true"></span>
+            </a>
+
+            <address class="contacts-list">
+              <a href="https://maps.yandex.ru" target="_blank" rel="noreferrer">
+                <span aria-hidden="true">⌖</span>
+                Береговая улица, 25,<br />Улан-Удэ
+              </a>
+              <a href="tel:+79140000000">
+                <span aria-hidden="true">☏</span>
+                +7 (914) 000 00 00
+              </a>
+              <a href="mailto:mailmailmail@mail.ru">
+                <span aria-hidden="true">✉</span>
+                mailmailmail@mail.ru
+              </a>
+            </address>
+          </div>
+
+          <nav class="footer-nav" aria-label="Навигация в подвале">
+            <div>
+              <a class="footer-nav-title" href="#about">О месте</a>
+              <a href="#about">Команда</a>
+              <a href="#about">Документы</a>
+            </div>
+            <div>
+              <a class="footer-nav-title" href="#services">Услуги</a>
+              <a href="#services">Проживание</a>
+              <a href="#services">Бани</a>
+              <a href="#services">Питание</a>
+            </div>
+            <div>
+              <a class="footer-nav-title" href="#history">История</a>
+              <a href="#history">Фотохроника</a>
+              <a href="#history">Люди и традиции</a>
+            </div>
+            <div>
+              <a class="footer-nav-title" href="#press">Пресса о нас</a>
+              <a href="#press">Новости</a>
+              <a href="#press">Публикации</a>
+              <a href="#press">СМИ о нас</a>
+            </div>
+            <div>
+              <a class="footer-nav-title" href="#gallery">Фотогалерея</a>
+              <a href="#gallery">Природа Байкала</a>
+              <a href="#gallery">Времена года</a>
+            </div>
+            <div>
+              <a class="footer-nav-title" href="#contacts">Контакты</a>
+              <a href="https://maps.yandex.ru" target="_blank" rel="noreferrer">Как добраться</a>
+              <a href="tel:+79140000000">Контакты</a>
+              <a href="mailto:mailmailmail@mail.ru">Обратная связь</a>
+            </div>
+          </nav>
+        </div>
+
+        <div class="footer-bottom">
+          <p>© 2026 Моё Прибайкалье<br />Культурно-туристический центр</p>
+        </div>
+      </footer>
+    </main>
+
+    <div class="booking-modal" id="booking-modal" aria-hidden="true">
+      <div class="booking-modal__overlay" data-booking-close></div>
+      <section
+        class="booking-modal__dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="booking-modal-title"
+      >
+        <button class="booking-modal__close" type="button" aria-label="Закрыть окно" data-booking-close>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="booking-modal__content">
+          <p class="booking-modal__kicker">Бронирование</p>
+          <h2 id="booking-modal-title">Забронировать<br />отдых на Байкале</h2>
+          <div class="booking-modal__divider" aria-hidden="true"></div>
+          <p class="booking-modal__text">
+            Свяжитесь с нами по телефону — подскажем свободные даты, варианты проживания и стоимость.
+          </p>
+
+          <a class="booking-modal__phone" href="tel:+79141234567" aria-label="Позвонить по номеру +7 914 123-45-67">
+            <span aria-hidden="true"></span>
+            +7 (914) 123-45-67
+          </a>
+
+          <div class="booking-modal__actions">
+            <a class="booking-modal__call" href="tel:+79141234567">Позвонить сейчас</a>
+            <a class="booking-modal__whatsapp" href="https://t.me/NataliaShemyakina" target="_blank" rel="noreferrer">
+              <span aria-hidden="true"></span>
+              написать в telegram
+            </a>
+          </div>
+        </div>
+
+        <div class="booking-modal__meta">
+          <span class="booking-modal__time">Ежедневно с 9:00 до 21:00</span>
+          <span class="booking-modal__location">Гремячинск, берег Байкала</span>
+        </div>
+      </section>
+    </div>
+
+    <div class="mobile-menu" aria-hidden="true">
+      <div class="mobile-menu__overlay" data-menu-close></div>
+      <nav class="mobile-menu__panel" aria-label="Мобильное меню">
+        <button class="mobile-menu__close" type="button" aria-label="Закрыть меню" data-menu-close>
+          <span></span>
+          <span></span>
+        </button>
+        <a href="#about" data-menu-close>О месте</a>
+        <a href="#services" data-menu-close>Услуги</a>
+        <a href="#history" data-menu-close>История</a>
+        <a href="#events" data-menu-close>Афиша</a>
+        <a href="#press" data-menu-close>Пресса о нас</a>
+        <a href="#gallery" data-menu-close>Галерея</a>
+        <a href="#contacts" data-menu-close>Контакты</a>
+        <a class="mobile-menu__booking" href="#booking-modal" data-booking-open data-menu-close>Забронировать</a>
+        <div class="mobile-menu__contacts">
+          <a href="tel:+79141234567" data-menu-close>+7 (914) 123-45-67</a>
+          <a href="https://t.me/NataliaShemyakina" target="_blank" rel="noreferrer" data-menu-close>Telegram</a>
+        </div>
+      </nav>
+    </div>
+
+    <script>
+      const stickyHeader = document.querySelector(".sticky-header");
+      const toggleStickyHeader = () => {
+        stickyHeader?.classList.toggle("is-visible", window.scrollY > 120);
+      };
+
+      toggleStickyHeader();
+      window.addEventListener("scroll", toggleStickyHeader, { passive: true });
+
+      const bookingModal = document.querySelector(".booking-modal");
+      const bookingOpenButtons = document.querySelectorAll("[data-booking-open]");
+      const bookingCloseButtons = document.querySelectorAll("[data-booking-close]");
+      const mobileMenu = document.querySelector(".mobile-menu");
+      const menuOpenButtons = document.querySelectorAll("[data-menu-open]");
+      const menuCloseButtons = document.querySelectorAll("[data-menu-close]");
+
+      const openMobileMenu = () => {
+        mobileMenu?.classList.add("is-open");
+        mobileMenu?.setAttribute("aria-hidden", "false");
+        document.body.classList.add("menu-open");
+        menuOpenButtons.forEach((button) => button.setAttribute("aria-expanded", "true"));
+      };
+
+      const closeMobileMenu = () => {
+        mobileMenu?.classList.remove("is-open");
+        mobileMenu?.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("menu-open");
+        menuOpenButtons.forEach((button) => button.setAttribute("aria-expanded", "false"));
+      };
+
+      const openBookingModal = () => {
+        bookingModal?.classList.add("is-open");
+        bookingModal?.setAttribute("aria-hidden", "false");
+        document.body.classList.add("modal-open");
+      };
+
+      const closeBookingModal = () => {
+        bookingModal?.classList.remove("is-open");
+        bookingModal?.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("modal-open");
+      };
+
+      bookingOpenButtons.forEach((button) => {
+        button.addEventListener("click", (event) => {
+          event.preventDefault();
+          openBookingModal();
+        });
+      });
+
+      bookingCloseButtons.forEach((button) => {
+        button.addEventListener("click", closeBookingModal);
+      });
+
+      menuOpenButtons.forEach((button) => {
+        button.addEventListener("click", openMobileMenu);
+      });
+
+      menuCloseButtons.forEach((button) => {
+        button.addEventListener("click", closeMobileMenu);
+      });
+
+      window.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && bookingModal?.classList.contains("is-open")) {
+          closeBookingModal();
+        }
+        if (event.key === "Escape" && mobileMenu?.classList.contains("is-open")) {
+          closeMobileMenu();
+        }
+      });
+
+      const gallery = document.querySelector("[data-gallery]");
+      const galleryCards = Array.from(document.querySelectorAll("[data-gallery-card]"));
+      const galleryDots = Array.from(document.querySelectorAll("[data-gallery-dot]"));
+      const galleryPrev = document.querySelector("[data-gallery-prev]");
+      const galleryNext = document.querySelector("[data-gallery-next]");
+      let galleryIndex = 0;
+
+      const getGalleryOffset = (index) => {
+        const length = galleryCards.length;
+        const rawOffset = (index - galleryIndex + length) % length;
+        return rawOffset > length / 2 ? rawOffset - length : rawOffset;
+      };
+
+      const renderGallery = () => {
+        galleryCards.forEach((card, index) => {
+          const offset = getGalleryOffset(index);
+          card.classList.toggle("is-active", offset === 0);
+          card.classList.toggle("is-prev", offset === -1);
+          card.classList.toggle("is-next", offset === 1);
+          card.classList.toggle("is-far-prev", offset === -2);
+          card.classList.toggle("is-far-next", offset === 2);
+          card.setAttribute("aria-hidden", offset === 0 ? "false" : "true");
+        });
+
+        galleryDots.forEach((dot, index) => {
+          dot.classList.toggle("active", index === galleryIndex);
+        });
+      };
+
+      const moveGallery = (direction) => {
+        galleryIndex = (galleryIndex + direction + galleryCards.length) % galleryCards.length;
+        renderGallery();
+      };
+
+      if (gallery && galleryCards.length) {
+        renderGallery();
+        galleryPrev?.addEventListener("click", () => moveGallery(-1));
+        galleryNext?.addEventListener("click", () => moveGallery(1));
+        galleryDots.forEach((dot, index) => {
+          dot.addEventListener("click", () => {
+            galleryIndex = index;
+            renderGallery();
+          });
+        });
+      }
+    </script>
+  </body>
+</html>
