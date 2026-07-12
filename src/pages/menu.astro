@@ -1,0 +1,364 @@
+---
+import "../styles/global.css";
+
+const assetBase = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const asset = (path: string) => `${assetBase}${path.replace(/^\//, "")}`;
+const home = assetBase;
+
+const featureCards = [
+  {
+    icon: asset("/images/menu-icons/menu-feature-home.png"),
+    title: "Домашняя кухня",
+    text: "Готовим как дома — из свежих продуктов",
+  },
+  {
+    icon: asset("/images/menu-icons/menu-feature-cloche.png"),
+    title: "Комплексные обеды",
+    text: "Сбалансированные и сытные блюда",
+  },
+  {
+    icon: asset("/images/menu-icons/menu-feature-sun.png"),
+    title: "Завтраки и ужины",
+    text: "Включены в проживание по выбранному тарифу",
+  },
+  {
+    icon: asset("/images/menu-icons/menu-feature-calendar.png"),
+    title: "Питание для групп",
+    text: "Можно согласовать меню заранее",
+  },
+];
+
+const menuSections = [
+  {
+    id: "popular",
+    icon: asset("/images/menu-icons/menu-complex.png"),
+    title: "Популярные блюда",
+    note: "5 блюд",
+    items: [
+      ["Борщ", "Порция 300 гр.", "250 ₽"],
+      ["Пельмени домашние", "10 шт.", "300 ₽"],
+      ["Уха", "Порция 300 гр.", "350 ₽"],
+      ["Плов", "Порция 250 гр.", "400 ₽"],
+      ["Комплексный обед", "Салат, суп, горячее, гарнир, напиток, хлеб", "710 ₽"],
+    ],
+  },
+  {
+    id: "salads",
+    icon: asset("/images/menu-icons/menu-salad.png"),
+    title: "Салаты",
+    note: "7 позиций",
+    items: [
+      ["Цезарь с курицей", "Порция 200 гр.", "400 ₽"],
+      ["Греческий", "Порция 200 гр.", "290 ₽"],
+      ["Салат с говяжьим языком", "Порция 200 гр.", "400 ₽"],
+      ["Салат сезонный из свежих овощей", "Порция 150 гр.", "220 ₽"],
+      ["Кимчи", "Порция 100 гр.", "150 ₽"],
+      ["Морковь по-корейски", "Порция 100 гр.", "150 ₽"],
+      ["Свекольный салат", "Порция 100 гр.", "150 ₽"],
+    ],
+  },
+  {
+    id: "soups",
+    icon: asset("/images/menu-icons/menu-soup.png"),
+    title: "Супы",
+    note: "5 позиций",
+    items: [
+      ["Борщ", "Порция 300 гр.", "250 ₽"],
+      ["Солянка сборная мясная", "Порция 300 гр.", "350 ₽"],
+      ["Пельмени домашние", "10 шт.", "300 ₽"],
+      ["Уха", "Порция 300 гр.", "350 ₽"],
+      ["Лагман", "Порция 300 гр.", "400 ₽"],
+    ],
+  },
+  {
+    id: "hot",
+    icon: asset("/images/menu-icons/menu-hot.png"),
+    title: "Горячие блюда",
+    note: "12 позиций",
+    items: [
+      ["Жарёха со свининой и картофелем", "100/150 гр.", "400 ₽"],
+      ["Паста карбонара", "Порция 200 гр.", "350 ₽"],
+      ["Курица в грибном соусе с рисом", "100/150 гр.", "350 ₽"],
+      ["Картофель фри", "Порция 100 гр.", "200 ₽"],
+      ["Куриные наггетсы", "6 шт.", "200 ₽"],
+      ["Бифштекс с яйцом", "100/50 гр.", "300 ₽"],
+      ["Котлета рыбная", "Порция 90 гр.", "200 ₽"],
+      ["Котлета куриная в панировке", "Порция 90 гр.", "200 ₽"],
+      ["Цуйван", "Порция 250 гр.", "350 ₽"],
+      ["Рис отварной", "Порция 100 гр.", "150 ₽"],
+      ["Плов", "Порция 250 гр.", "400 ₽"],
+      ["Куриные крылышки KFC", "Острые / неострые, 10 шт.", "500 ₽"],
+    ],
+  },
+  {
+    id: "bakery",
+    icon: asset("/images/menu-icons/menu-bakery.png"),
+    title: "Выпечка",
+    note: "6 позиций",
+    items: [
+      ["Пирожки", "1 шт.", "80 ₽"],
+      ["Беляш", "1 шт.", "150 ₽"],
+      ["Чебурек", "1 шт.", "150 ₽"],
+      ["Сырники", "С джемом, сметаной или сгущенным молоком, 2 шт.", "250 ₽"],
+      ["Хлеб", "1 кусочек", "10 ₽"],
+      ["Оладьи", "С повидлом или сгущенным молоком, 2 шт.", "250 ₽"],
+    ],
+  },
+  {
+    id: "drinks",
+    icon: asset("/images/menu-icons/menu-drinks.png"),
+    title: "Напитки",
+    note: "8 позиций",
+    items: [
+      ["Морс брусничный / облепиховый", "200 гр.", "90 ₽"],
+      ["Компот из сухофруктов", "200 гр.", "80 ₽"],
+      ["Чай чёрный", "200 гр.", "50 ₽"],
+      ["Чай чёрный с молоком", "200 гр.", "50 ₽"],
+      ["Чай чёрный с лимоном и сахаром", "200 гр.", "60 ₽"],
+      ["Чай зелёный с молоком", "200 гр.", "60 ₽"],
+      ["Кофе растворимый", "200 гр.", "80 ₽"],
+      ["Кипяток", "200 гр.", "20 ₽"],
+    ],
+  },
+];
+
+const mealPlans = [
+  {
+    icon: asset("/images/menu-icons/menu-breakfast.png"),
+    title: "Комплексный завтрак",
+    price: "290 ₽",
+    text: "Горячее на выбор: каша дня на молоке со сливочным маслом или яичница-глазунья с сосиской. Выпечка, напиток и хлеб.",
+  },
+  {
+    icon: asset("/images/menu-icons/menu-complex.png"),
+    title: "Комплексный обед",
+    price: "710 ₽",
+    text: "Салат, суп дня, горячее дня, гарнир, напиток и хлеб.",
+  },
+  {
+    icon: asset("/images/menu-icons/menu-hot.png"),
+    title: "Комплексный ужин",
+    price: "500 ₽",
+    text: "Горячее дня, гарнир, выпечка, напиток и хлеб.",
+  },
+];
+
+const banquetItems = [
+  ["Цезарь с креветками", "Порция 200 гр.", "600 ₽"],
+  ["Оливье", "Порция 350 гр.", "550 ₽"],
+  ["Салат со свиной рулькой", "Порция 300 гр.", "600 ₽"],
+  ["Рыбное ассорти", "Форель с/с, омуль, картофель, зелень, маслины", "1150 ₽"],
+  ["Мясное ассорти", "Язык, буженина, куриный рулет, горчица, зелень", "1100 ₽"],
+  ["Овощное ассорти", "Огурцы, помидоры, болгарский перец, дайкон, зелень", "450 ₽"],
+  ["Фруктовая тарелка", "Порция 500 гр.", "900 ₽"],
+  ["Сырная тарелка", "Бри, мёд, виноград, орехи, фета, копчёный сыр", "1500 ₽"],
+  ["Шашлык из свиной шеи", "Порция 300 гр.", "600 ₽"],
+  ["Плов", "Порция 1000 гр.", "2300 ₽"],
+  ["Ассорти «Бурятия»", "Буузы, хушууры, соус и горчица", "1700 ₽"],
+];
+---
+
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Меню кафе | Моё Прибайкалье</title>
+  </head>
+  <body>
+    <header class="history-page-header menu-page-header">
+      <a class="logo" href={home} aria-label="Моё Прибайкалье">
+        <span class="logo-image" aria-hidden="true"></span>
+      </a>
+
+      <nav class="nav" aria-label="Навигация по сайту">
+        <a href={`${home}#about`}>О месте</a>
+        <a href={asset("/services")}>Услуги</a>
+        <a class="is-active" href={asset("/menu")}>Кафе</a>
+        <a href={asset("/history")}>История</a>
+        <a href={asset("/events")}>Афиша</a>
+        <a href={asset("/press")}>Пресса о нас</a>
+        <a href={`${home}#gallery`}>Галерея</a>
+        <a href={`${home}#contacts`}>Контакты</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="booking-button" href={`${home}#booking`}>Забронировать</a>
+        <button class="menu-button" type="button" aria-label="Открыть меню" aria-expanded="false" data-menu-open>
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <main class="cafe-menu-page">
+      <section class="cafe-menu-hero">
+        <div class="cafe-menu-hero__copy">
+          <p class="section-kicker">Питание на базе</p>
+          <h1>Меню кафе</h1>
+          <p class="cafe-menu-hero__lead">Домашняя кухня из свежих местных продуктов</p>
+          <span class="cafe-menu-hero__divider" aria-hidden="true"></span>
+          <p class="cafe-menu-hero__text">Мы готовим как дома — из натуральных ингредиентов с Байкальского региона. Сытно, вкусно и по-домашнему.</p>
+        </div>
+
+        <figure class="cafe-menu-hero__photo">
+          <img src={asset("/images/cafe-menu-hero-food.png")} alt="Домашний суп, салат, хлеб и чай на деревянном столе" />
+        </figure>
+      </section>
+
+      <section class="cafe-menu-board" id="full-menu">
+        <aside class="cafe-menu-sidebar" aria-label="Разделы меню">
+          <h2>Меню кафе</h2>
+          <nav>
+            {menuSections.map((section) => (
+              <button class:list={{ "is-active": section.id === "popular" }} type="button" data-menu-filter={section.id}>
+                <img src={section.icon} alt="" loading="lazy" />
+                <span>{section.title}</span>
+              </button>
+            ))}
+            <button type="button" data-menu-filter="complex">
+              <img src={asset("/images/menu-icons/menu-breakfast.png")} alt="" loading="lazy" />
+              <span>Комплексное питание</span>
+            </button>
+            <button type="button" data-menu-filter="banquet">
+              <img src={asset("/images/menu-icons/menu-banquet.png")} alt="" loading="lazy" />
+              <span>Банкетное</span>
+            </button>
+          </nav>
+          <a class="cafe-menu-sidebar__download" href={asset("/images/menu-moe-pribaikalye.jpg")} target="_blank" rel="noreferrer">Открыть исходное меню</a>
+        </aside>
+
+        <div class="cafe-menu-content">
+          {menuSections.map((section) => (
+            <section class="cafe-menu-section" id={section.id} data-menu-panel={section.id} hidden={section.id !== "popular"}>
+              <div class="cafe-menu-section__head">
+                <div>
+                  <img src={section.icon} alt="" loading="lazy" />
+                  <h2>{section.title}</h2>
+                </div>
+                <span>{section.note}</span>
+              </div>
+              <div class="cafe-menu-list">
+                {section.items.map(([title, text, price]) => (
+                  <article>
+                    <div>
+                      <h3>{title}</h3>
+                      <p>{text}</p>
+                    </div>
+                    <strong>{price}</strong>
+                  </article>
+                ))}
+              </div>
+            </section>
+          ))}
+
+          <section class="cafe-menu-section cafe-menu-section--plans" id="complex" data-menu-panel="complex" hidden>
+            <div class="cafe-menu-section__head">
+              <div>
+                <img src={asset("/images/menu-icons/menu-complex.png")} alt="" loading="lazy" />
+                <h2>Комплексное питание</h2>
+              </div>
+              <span>3 формата</span>
+            </div>
+            <div class="cafe-menu-plans">
+              {mealPlans.map((plan) => (
+                <article>
+                  <img src={plan.icon} alt="" loading="lazy" />
+                  <strong>{plan.title}</strong>
+                  <span>{plan.price}</span>
+                  <p>{plan.text}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section class="cafe-menu-section" id="banquet" data-menu-panel="banquet" hidden>
+            <div class="cafe-menu-section__head">
+              <div>
+                <img src={asset("/images/menu-icons/menu-banquet.png")} alt="" loading="lazy" />
+                <h2>Банкетное предложение</h2>
+              </div>
+              <span>{banquetItems.length} позиций</span>
+            </div>
+            <div class="cafe-menu-list cafe-menu-list--two">
+              {banquetItems.map(([title, text, price]) => (
+                <article>
+                  <div>
+                    <h3>{title}</h3>
+                    <p>{text}</p>
+                  </div>
+                  <strong>{price}</strong>
+                </article>
+              ))}
+            </div>
+          </section>
+        </div>
+      </section>
+
+    </main>
+
+    <div class="mobile-menu" aria-hidden="true">
+      <div class="mobile-menu__overlay" data-menu-close></div>
+      <nav class="mobile-menu__panel" aria-label="Мобильное меню">
+        <button class="mobile-menu__close" type="button" aria-label="Закрыть меню" data-menu-close>
+          <span></span>
+          <span></span>
+        </button>
+        <a href={`${home}#about`} data-menu-close>О месте</a>
+        <a href={asset("/services")} data-menu-close>Услуги</a>
+        <a href={asset("/menu")} data-menu-close>Кафе</a>
+        <a href={asset("/history")} data-menu-close>История</a>
+        <a href={asset("/events")} data-menu-close>Афиша</a>
+        <a href={asset("/press")} data-menu-close>Пресса о нас</a>
+        <a href={`${home}#contacts`} data-menu-close>Контакты</a>
+        <a class="mobile-menu__booking" href={`${home}#booking`} data-menu-close>Забронировать</a>
+      </nav>
+    </div>
+
+    <script>
+      const mobileMenu = document.querySelector(".mobile-menu");
+      const menuOpenButtons = document.querySelectorAll("[data-menu-open]");
+      const menuCloseButtons = document.querySelectorAll("[data-menu-close]");
+
+      const openMobileMenu = () => {
+        mobileMenu?.classList.add("is-open");
+        mobileMenu?.setAttribute("aria-hidden", "false");
+        document.body.classList.add("menu-open");
+        menuOpenButtons.forEach((button) => button.setAttribute("aria-expanded", "true"));
+      };
+
+      const closeMobileMenu = () => {
+        mobileMenu?.classList.remove("is-open");
+        mobileMenu?.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("menu-open");
+        menuOpenButtons.forEach((button) => button.setAttribute("aria-expanded", "false"));
+      };
+
+      menuOpenButtons.forEach((button) => button.addEventListener("click", openMobileMenu));
+      menuCloseButtons.forEach((button) => button.addEventListener("click", closeMobileMenu));
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeMobileMenu();
+      });
+
+      const menuFilterButtons = document.querySelectorAll("[data-menu-filter]");
+      const menuPanels = document.querySelectorAll("[data-menu-panel]");
+
+      const showMenuPanel = (panelId) => {
+        menuFilterButtons.forEach((button) => {
+          button.classList.toggle("is-active", button.dataset.menuFilter === panelId);
+        });
+
+        menuPanels.forEach((panel) => {
+          panel.hidden = panel.dataset.menuPanel !== panelId;
+        });
+      };
+
+      menuFilterButtons.forEach((button) => {
+        button.addEventListener("click", () => showMenuPanel(button.dataset.menuFilter));
+      });
+    </script>
+  </body>
+</html>

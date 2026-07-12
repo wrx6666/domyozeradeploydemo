@@ -1,10 +1,13 @@
 ---
 import "../styles/global.css";
+import { fallbackEvents } from "../data/events";
 
 const assetBase = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
 const asset = (path: string) => `${assetBase}${path.replace(/^\//, "")}`;
+const eventsFeedUrl = import.meta.env.PUBLIC_EVENTS_SHEET_CSV_URL || "";
+const homeEvents = fallbackEvents.slice(0, 3);
 ---
 
 <html lang="ru">
@@ -22,10 +25,11 @@ const asset = (path: string) => `${assetBase}${path.replace(/^\//, "")}`;
 
       <nav class="nav" aria-label="Липкая навигация">
         <a href="#about">О месте</a>
-        <a href="#services">Услуги</a>
-        <a href="#history">История</a>
-        <a href="#events">Афиша</a>
-        <a href="#press">Пресса о нас</a>
+        <a href={asset("/services")}>Услуги</a>
+        <a href={asset("/menu")}>Кафе</a>
+        <a href={asset("/history")}>История</a>
+        <a href={asset("/events")}>Афиша</a>
+        <a href={asset("/press")}>Пресса о нас</a>
         <a href="#gallery">Галерея</a>
         <a href="#contacts">Контакты</a>
       </nav>
@@ -49,10 +53,11 @@ const asset = (path: string) => `${assetBase}${path.replace(/^\//, "")}`;
 
           <nav class="nav" aria-label="Основная навигация">
             <a href="#about">О месте</a>
-            <a href="#services">Услуги</a>
-            <a href="#history">История</a>
-            <a href="#events">Афиша</a>
-            <a href="#press">Пресса о нас</a>
+            <a href={asset("/services")}>Услуги</a>
+            <a href={asset("/menu")}>Кафе</a>
+            <a href={asset("/history")}>История</a>
+            <a href={asset("/events")}>Афиша</a>
+            <a href={asset("/press")}>Пресса о нас</a>
             <a href="#gallery">Галерея</a>
             <a href="#contacts">Контакты</a>
           </nav>
@@ -82,7 +87,7 @@ const asset = (path: string) => `${assetBase}${path.replace(/^\//, "")}`;
           <div class="hero-buttons">
             <a class="button button-booking-mobile" href="#booking-modal" data-booking-open>Забронировать</a>
             <a class="button button-primary" href="#about">Узнать больше</a>
-            <a class="button button-secondary" href="#services">Наши услуги</a>
+            <a class="button button-secondary" href={asset("/services")}>Наши услуги</a>
           </div>
         </div>
       </section>
@@ -135,7 +140,7 @@ const asset = (path: string) => `${assetBase}${path.replace(/^\//, "")}`;
               Сегодня мы бережно сохраняем историю места и делимся ею с нашими
               гостями.
             </p>
-            <a class="button button-primary" href="#history">Читать историю <span aria-hidden="true">→</span></a>
+            <a class="button button-primary" href={asset("/history")}>Читать историю <span aria-hidden="true">→</span></a>
             <img class="history-boat-sketch" src={asset("/images/decor/history-boat-original.png")} alt="" loading="lazy" />
             <div class="history-timeline" aria-label="Ключевые даты истории">
               <div>
@@ -188,7 +193,7 @@ const asset = (path: string) => `${assetBase}${path.replace(/^\//, "")}`;
               <span>21 октября 2025</span>
               <span>Телеканал Бурятия</span>
             </div>
-            <a href="#press">Читать статью <span aria-hidden="true">→</span></a>
+            <a href={asset("/press#media")}>Читать статью <span aria-hidden="true">→</span></a>
           </article>
 
           <div class="news-list">
@@ -202,7 +207,7 @@ const asset = (path: string) => `${assetBase}${path.replace(/^\//, "")}`;
                 <span>18 октября 2025</span>
                 <span>Восток-Телеинформ</span>
               </div>
-              <a href="#press">Читать статью <span aria-hidden="true">→</span></a>
+              <a href={asset("/press#news")}>Читать статью <span aria-hidden="true">→</span></a>
             </article>
 
             <article class="news-card">
@@ -215,7 +220,7 @@ const asset = (path: string) => `${assetBase}${path.replace(/^\//, "")}`;
                 <span>12 октября 2025</span>
                 <span>Правительство Бурятии</span>
               </div>
-              <a href="#press">Читать статью <span aria-hidden="true">→</span></a>
+              <a href={asset("/press#news")}>Читать статью <span aria-hidden="true">→</span></a>
             </article>
 
             <article class="news-card news-card-wide">
@@ -226,7 +231,7 @@ const asset = (path: string) => `${assetBase}${path.replace(/^\//, "")}`;
                 <span>5 октября 2025</span>
                 <span>Моё Прибайкалье</span>
               </div>
-              <a href="#press">Читать статью <span aria-hidden="true">→</span></a>
+              <a href={asset("/press#publications")}>Читать статью <span aria-hidden="true">→</span></a>
             </article>
           </div>
         </div>
@@ -237,7 +242,7 @@ const asset = (path: string) => `${assetBase}${path.replace(/^\//, "")}`;
             <h3>СМИ о нас</h3>
             <p>Все публикации о культурно-туристическом центре в одном месте</p>
           </div>
-          <a href="#press">Смотреть все публикации <span aria-hidden="true">→</span></a>
+          <a href={asset("/press")}>Смотреть все публикации <span aria-hidden="true">→</span></a>
         </div>
       </section>
 
@@ -252,69 +257,37 @@ const asset = (path: string) => `${assetBase}${path.replace(/^\//, "")}`;
           <span class="sprig sprig-right" aria-hidden="true"></span>
         </div>
 
-        <div class="events-grid">
-          <article class="event-card">
-            <div class="event-image event-image-zero">
-              <time datetime="2026-05-17"><b>17</b><span>мая</span></time>
-            </div>
-            <div class="event-body">
-              <h3>Прогулка по берегу Байкала</h3>
-              <p>Спокойный маршрут вдоль воды, рассказы о природе и лучших местах для семейных фотографий.</p>
-              <div class="event-time"><span aria-hidden="true"></span>10:00 - 12:00</div>
-              <a href="#events">Подробнее <span aria-hidden="true">→</span></a>
-            </div>
-          </article>
+        <div
+          class="events-grid"
+          data-events-feed="home"
+          data-events-limit="3"
+          data-events-url={eventsFeedUrl}
+          data-asset-base={assetBase}
+          data-events-fallback="home-events-fallback"
+        >
+          {homeEvents.map((event) => {
+            const date = new Date(`${event.date}T00:00:00`);
+            const day = String(date.getDate()).padStart(2, "0");
+            const month = date.toLocaleString("ru-RU", { month: "long" });
 
-          <article class="event-card">
-            <div class="event-image event-image-one">
-              <time datetime="2026-05-24"><b>24</b><span>мая</span></time>
-            </div>
-            <div class="event-body">
-              <h3>Экскурсия по рыбацкому стану</h3>
-              <p>Погружение в историю промысла, рассказ о традициях и быте рыбаков.</p>
-              <div class="event-time"><span aria-hidden="true"></span>12:00 - 14:00</div>
-              <a href="#events">Подробнее <span aria-hidden="true">→</span></a>
-            </div>
-          </article>
-
-          <article class="event-card">
-            <div class="event-image event-image-two">
-              <time datetime="2026-06-07"><b>07</b><span>июня</span></time>
-            </div>
-            <div class="event-body">
-              <h3>Вечер у Байкала</h3>
-              <p>Атмосферный вечер с живой музыкой, байкальскими историями и чаем на травах.</p>
-              <div class="event-time"><span aria-hidden="true"></span>18:00 - 21:00</div>
-              <a href="#events">Подробнее <span aria-hidden="true">→</span></a>
-            </div>
-          </article>
-
-          <article class="event-card">
-            <div class="event-image event-image-three">
-              <time datetime="2026-06-21"><b>21</b><span>июня</span></time>
-            </div>
-            <div class="event-body">
-              <h3>Мастер-класс традиционной кухни</h3>
-              <p>Готовим блюда старинной сибирской кухни из местных продуктов.</p>
-              <div class="event-time"><span aria-hidden="true"></span>15:00 - 17:00</div>
-              <a href="#events">Подробнее <span aria-hidden="true">→</span></a>
-            </div>
-          </article>
-
-          <article class="event-card">
-            <div class="event-image event-image-four">
-              <time datetime="2026-07-05"><b>05</b><span>июля</span></time>
-            </div>
-            <div class="event-body">
-              <h3>Семейный день на Байкале</h3>
-              <p>Игры, прогулки, горячий чай и небольшие мастер-классы для гостей всех возрастов.</p>
-              <div class="event-time"><span aria-hidden="true"></span>11:00 - 16:00</div>
-              <a href="#events">Подробнее <span aria-hidden="true">→</span></a>
-            </div>
-          </article>
+            return (
+              <article class="event-card">
+                <div class="event-image" style={`background-image: url('${asset(event.image)}')`}>
+                  <time datetime={event.date}><b>{day}</b><span>{month}</span></time>
+                </div>
+                <div class="event-body">
+                  <h3>{event.title}</h3>
+                  <p>{event.text}</p>
+                  <div class="event-time"><span aria-hidden="true"></span>{event.time}</div>
+                  <a href={event.url || asset(`/events#${event.id}`)} target={event.url ? "_blank" : undefined} rel={event.url ? "noreferrer" : undefined}>Подробнее <span aria-hidden="true">→</span></a>
+                </div>
+              </article>
+            );
+          })}
         </div>
 
-        <a class="events-all" href="#events">Все мероприятия <span aria-hidden="true">→</span></a>
+        <a class="events-all" href={asset("/events")}>Все мероприятия <span aria-hidden="true">→</span></a>
+        <script id="home-events-fallback" type="application/json" set:html={JSON.stringify(fallbackEvents)}></script>
       </section>
 
       <section class="gallery-section" id="gallery">
@@ -428,17 +401,17 @@ const asset = (path: string) => `${assetBase}${path.replace(/^\//, "")}`;
             </a>
 
             <address class="contacts-list">
-              <a href="https://maps.yandex.ru" target="_blank" rel="noreferrer">
+              <a href="https://yandex.ru/maps/?text=%D1%83%D0%BB.%20%D0%91%D0%B5%D1%80%D0%B5%D0%B3%D0%BE%D0%B2%D0%B0%D1%8F%202%D0%91%2C%20%D1%81%D0%B5%D0%BB%D0%BE%20%D0%93%D1%80%D0%B5%D0%BC%D1%8F%D1%87%D0%B8%D0%BD%D1%81%D0%BA%2C%20%D0%9F%D1%80%D0%B8%D0%B1%D0%B0%D0%B9%D0%BA%D0%B0%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%B9%20%D1%80%D0%B0%D0%B9%D0%BE%D0%BD%2C%20%D0%A0%D0%B5%D1%81%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D0%BA%D0%B0%20%D0%91%D1%83%D1%80%D1%8F%D1%82%D0%B8%D1%8F" target="_blank" rel="noreferrer">
                 <span aria-hidden="true">⌖</span>
-                Береговая улица, 25,<br />Улан-Удэ
+                ул. Береговая 2Б,<br />село Гремячинск,<br />Прибайкальский район,<br />Республика Бурятия
               </a>
-              <a href="tel:+79140000000">
+              <a href="tel:+79247761161">
                 <span aria-hidden="true">☏</span>
-                +7 (914) 000 00 00
+                +7 (924) 776-1161
               </a>
-              <a href="mailto:mailmailmail@mail.ru">
+              <a href="mailto:brcbs@bk.ru">
                 <span aria-hidden="true">✉</span>
-                mailmailmail@mail.ru
+                brcbs@bk.ru
               </a>
             </address>
           </div>
@@ -450,21 +423,21 @@ const asset = (path: string) => `${assetBase}${path.replace(/^\//, "")}`;
               <a href="#about">Документы</a>
             </div>
             <div>
-              <a class="footer-nav-title" href="#services">Услуги</a>
-              <a href="#services">Проживание</a>
-              <a href="#services">Бани</a>
-              <a href="#services">Питание</a>
+              <a class="footer-nav-title" href={asset("/services")}>Услуги</a>
+              <a href={asset("/services#stay")}>Проживание</a>
+              <a href={asset("/services#bath")}>Бани</a>
+              <a href={asset("/services#food")}>Питание</a>
             </div>
             <div>
-              <a class="footer-nav-title" href="#history">История</a>
-              <a href="#history">Фотохроника</a>
-              <a href="#history">Люди и традиции</a>
+              <a class="footer-nav-title" href={asset("/history")}>История</a>
+              <a href={asset("/history#chronicle")}>Фотохроника</a>
+              <a href={asset("/history#people")}>Люди и традиции</a>
             </div>
             <div>
-              <a class="footer-nav-title" href="#press">Пресса о нас</a>
-              <a href="#press">Новости</a>
-              <a href="#press">Публикации</a>
-              <a href="#press">СМИ о нас</a>
+              <a class="footer-nav-title" href={asset("/press")}>Пресса о нас</a>
+              <a href={asset("/press#news")}>Новости</a>
+              <a href={asset("/press#publications")}>Публикации</a>
+              <a href={asset("/press#media")}>СМИ о нас</a>
             </div>
             <div>
               <a class="footer-nav-title" href="#gallery">Фотогалерея</a>
@@ -473,9 +446,9 @@ const asset = (path: string) => `${assetBase}${path.replace(/^\//, "")}`;
             </div>
             <div>
               <a class="footer-nav-title" href="#contacts">Контакты</a>
-              <a href="https://maps.yandex.ru" target="_blank" rel="noreferrer">Как добраться</a>
-              <a href="tel:+79140000000">Контакты</a>
-              <a href="mailto:mailmailmail@mail.ru">Обратная связь</a>
+              <a href="https://yandex.ru/maps/?text=%D1%83%D0%BB.%20%D0%91%D0%B5%D1%80%D0%B5%D0%B3%D0%BE%D0%B2%D0%B0%D1%8F%202%D0%91%2C%20%D1%81%D0%B5%D0%BB%D0%BE%20%D0%93%D1%80%D0%B5%D0%BC%D1%8F%D1%87%D0%B8%D0%BD%D1%81%D0%BA%2C%20%D0%9F%D1%80%D0%B8%D0%B1%D0%B0%D0%B9%D0%BA%D0%B0%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%B9%20%D1%80%D0%B0%D0%B9%D0%BE%D0%BD%2C%20%D0%A0%D0%B5%D1%81%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D0%BA%D0%B0%20%D0%91%D1%83%D1%80%D1%8F%D1%82%D0%B8%D1%8F" target="_blank" rel="noreferrer">Как добраться</a>
+              <a href="tel:+79247761161">Контакты</a>
+              <a href="mailto:brcbs@bk.ru">Обратная связь</a>
             </div>
           </nav>
         </div>
@@ -507,23 +480,31 @@ const asset = (path: string) => `${assetBase}${path.replace(/^\//, "")}`;
             Свяжитесь с нами по телефону — подскажем свободные даты, варианты проживания и стоимость.
           </p>
 
-          <a class="booking-modal__phone" href="tel:+79141234567" aria-label="Позвонить по номеру +7 914 123-45-67">
+          <a class="booking-modal__phone" href="tel:+79294740434" aria-label="Позвонить по номеру +7 929 474-0434">
             <span aria-hidden="true"></span>
-            +7 (914) 123-45-67
+            +7 (929) 474-0434
           </a>
 
           <div class="booking-modal__actions">
-            <a class="booking-modal__call" href="tel:+79141234567">Позвонить сейчас</a>
+            <a class="booking-modal__call" href="tel:+79294740434">Позвонить сейчас</a>
             <a class="booking-modal__whatsapp" href="https://t.me/NataliaShemyakina" target="_blank" rel="noreferrer">
               <span aria-hidden="true"></span>
               написать в telegram
+            </a>
+            <a class="booking-modal__max" href="https://max.ru/NataliaShemyakina" target="_blank" rel="noreferrer">
+              <span aria-hidden="true"></span>
+              написать в max
+            </a>
+            <a class="booking-modal__vk" href="https://vk.com/NataliaShemyakina" target="_blank" rel="noreferrer">
+              <span aria-hidden="true"></span>
+              написать вконтакте
             </a>
           </div>
         </div>
 
         <div class="booking-modal__meta">
           <span class="booking-modal__time">Ежедневно с 9:00 до 21:00</span>
-          <span class="booking-modal__location">Гремячинск, берег Байкала</span>
+          <span class="booking-modal__location">ул. Береговая 2Б, село Гремячинск</span>
         </div>
       </section>
     </div>
@@ -536,20 +517,22 @@ const asset = (path: string) => `${assetBase}${path.replace(/^\//, "")}`;
           <span></span>
         </button>
         <a href="#about" data-menu-close>О месте</a>
-        <a href="#services" data-menu-close>Услуги</a>
-        <a href="#history" data-menu-close>История</a>
-        <a href="#events" data-menu-close>Афиша</a>
-        <a href="#press" data-menu-close>Пресса о нас</a>
+        <a href={asset("/services")} data-menu-close>Услуги</a>
+        <a href={asset("/menu")} data-menu-close>Кафе</a>
+        <a href={asset("/history")} data-menu-close>История</a>
+        <a href={asset("/events")} data-menu-close>Афиша</a>
+        <a href={asset("/press")} data-menu-close>Пресса о нас</a>
         <a href="#gallery" data-menu-close>Галерея</a>
         <a href="#contacts" data-menu-close>Контакты</a>
         <a class="mobile-menu__booking" href="#booking-modal" data-booking-open data-menu-close>Забронировать</a>
         <div class="mobile-menu__contacts">
-          <a href="tel:+79141234567" data-menu-close>+7 (914) 123-45-67</a>
+          <a href="tel:+79247761161" data-menu-close>+7 (924) 776-1161</a>
           <a href="https://t.me/NataliaShemyakina" target="_blank" rel="noreferrer" data-menu-close>Telegram</a>
         </div>
       </nav>
     </div>
 
+    <script src={asset("/scripts/events-feed.js")} defer></script>
     <script>
       const stickyHeader = document.querySelector(".sticky-header");
       const toggleStickyHeader = () => {
@@ -668,3 +651,4 @@ const asset = (path: string) => `${assetBase}${path.replace(/^\//, "")}`;
     </script>
   </body>
 </html>
+

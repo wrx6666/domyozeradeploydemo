@@ -1,0 +1,699 @@
+---
+import "../styles/global.css";
+
+const assetBase = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const asset = (path: string) => `${assetBase}${path.replace(/^\//, "")}`;
+const home = assetBase;
+
+const serviceCards = [
+  {
+    id: "stay",
+    number: "01",
+    kicker: "Проживание",
+    title: "Гостевой дом «У Озера»",
+    text: "Два корпуса на территории комплекса: историческая атмосфера Гремячинского рыбзавода и комфорт для спокойного отдыха у Байкала.",
+    image: asset("/images/history/history-main.png"),
+    button: "Подробнее о номерах",
+    modal: "stay-modal",
+  },
+  {
+    id: "bath",
+    number: "02",
+    kicker: "Баня",
+    title: "Рыбацкая баня на дровах",
+    text: "Парная, комната отдыха, авторский прибайкальский чай и все необходимое для настоящего банного отдыха.",
+    image: asset("/images/gallery/gallery-08.jpg"),
+    button: "Подробнее о бане",
+    modal: "bath-modal",
+    dark: true,
+  },
+  {
+    id: "food",
+    number: "03",
+    kicker: "Питание",
+    title: "Кафе и меню для гостей",
+    text: "Комплексное питание, горячие блюда, выпечка, салаты, напитки и банкетные предложения для групп.",
+    image: asset("/images/menu-moe-pribaikalye-optimized.jpg"),
+    button: "Смотреть меню",
+    href: asset("/menu"),
+  },
+  {
+    id: "tours",
+    number: "04",
+    kicker: "Экскурсии",
+    title: "Маршруты, истории и знакомство с Байкалом",
+    text: "Помогаем познакомиться с Гремячинском, местной историей, смотровыми точками и традициями Прибайкалья.",
+    image: asset("/images/history/gremyachinsk-viewpoint.jpg"),
+    button: "Узнать маршруты",
+    modal: "tours-modal",
+  },
+  {
+    id: "gifts",
+    number: "05",
+    kicker: "Сувениры",
+    title: "Подарки из Прибайкалья",
+    text: "Памятные вещи и локальные изделия, которые можно увезти с собой после встречи с Байкалом.",
+    image: asset("/images/gallery/gallery-07.jpg"),
+    button: "Что можно купить",
+    modal: "gifts-modal",
+  },
+];
+---
+
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Услуги | Моё Прибайкалье</title>
+  </head>
+  <body>
+    <header class="history-page-header services-page-header">
+      <a class="logo" href={home} aria-label="Моё Прибайкалье">
+        <span class="logo-image" aria-hidden="true"></span>
+      </a>
+
+      <nav class="nav" aria-label="Навигация по сайту">
+        <a href={`${home}#about`}>О месте</a>
+        <a class="is-active" href={asset("/services")}>Услуги</a>
+        <a href={asset("/menu")}>Кафе</a>
+        <a href={asset("/history")}>История</a>
+        <a href={asset("/events")}>Афиша</a>
+        <a href={asset("/press")}>Пресса о нас</a>
+        <a href={`${home}#gallery`}>Галерея</a>
+        <a href={`${home}#contacts`}>Контакты</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="booking-button" href={`${home}#booking`}>Забронировать</a>
+        <button class="menu-button" type="button" aria-label="Открыть меню" aria-expanded="false" data-menu-open>
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <main class="services-page services-reference-page">
+      <section class="services-reference-hero">
+        <div class="services-reference-hero__panel">
+          <p class="section-kicker">Услуги центра</p>
+          <h1>Все для отдыха на берегу Байкала</h1>
+          <p>Проживание, баня, питание, экскурсии и сувениры в одном месте. Подберем формат под вашу поездку.</p>
+          <div class="services-reference-hero__actions">
+            <a class="button button-primary" href={`${home}#booking`}>Забронировать</a>
+            <a class="button button-secondary" href="#stay">Посмотреть услуги</a>
+          </div>
+        </div>
+      </section>
+
+      <nav class="services-reference-strip" aria-label="Быстрый выбор услуг">
+        {serviceCards.map((service) => (
+          <a href={`#${service.id}`}>
+            <span>{service.number}</span>
+            <strong>{service.kicker}</strong>
+            <small>{service.text}</small>
+            <em>Подробнее</em>
+          </a>
+        ))}
+      </nav>
+
+      <section class="services-reference-stay" id="stay">
+        <div class="services-reference-copy">
+          <p class="section-kicker">Проживание</p>
+          <h2>Гостевой дом «У Озера»</h2>
+          <p>Два корпуса на территории комплекса в Гремячинске. Идеально для спокойного отдыха в окружении природы и чистого воздуха.</p>
+          <div class="services-reference-icons">
+            <span>Комфортные номера</span>
+            <span>Вид на озеро и горы</span>
+            <span>Парковка на территории</span>
+            <span>Wi-Fi на всей территории</span>
+          </div>
+          <button class="button button-primary" type="button" data-modal-open="stay-modal">Выбрать номер</button>
+        </div>
+        <div class="services-reference-gallery">
+          <img class="services-reference-gallery__main" src={asset("/images/services/services-guest-room.webp")} alt="Номер гостевого дома Моё Прибайкалье" loading="lazy" />
+          <div>
+            <article>
+              <img src={asset("/images/gallery/gallery-06.jpg")} alt="" loading="lazy" />
+              <span>Исторический корпус</span>
+            </article>
+            <article>
+              <img src={asset("/images/gallery/gallery-01.jpg")} alt="" loading="lazy" />
+              <span>Байкал рядом</span>
+            </article>
+            <article>
+              <img src={asset("/images/gallery/gallery-03.jpg")} alt="" loading="lazy" />
+              <span>Вечерний вид</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="services-reference-bath" id="bath">
+        <div>
+          <p class="section-kicker">Баня</p>
+          <h2>Рыбацкая баня на дровах</h2>
+          <p>Парная, комната отдыха, авторский прибайкальский чай и всё необходимое для настоящего банного отдыха.</p>
+          <div class="services-reference-bath__features">
+            <span>Парная на дровах</span>
+            <span>Комната отдыха</span>
+            <span>Травяной чай</span>
+          </div>
+          <button class="button button-primary" type="button" data-modal-open="bath-modal">Подробнее о бане</button>
+        </div>
+        <div class="services-reference-bath__media">
+          <img src={asset("/images/services/services-bath-interior.webp")} alt="" loading="lazy" />
+        </div>
+      </section>
+
+      <section class="services-reference-food" id="food">
+        <div class="services-reference-copy">
+          <p class="section-kicker">Питание</p>
+          <h2>Кафе и меню для гостей</h2>
+          <p>Домашняя кухня из свежих местных продуктов. Сытно, вкусно и по-домашнему.</p>
+          <a class="button button-primary" href={asset("/menu")}>Смотреть меню</a>
+        </div>
+        <div class="services-reference-menu">
+          <p class="section-kicker">Популярные позиции</p>
+          <dl>
+            <div><dt>Борщ со сметаной</dt><dd>300 ₽</dd></div>
+            <div><dt>Пельмени домашние</dt><dd>350 ₽</dd></div>
+            <div><dt>Омуль байкальский горячего копчения</dt><dd>600 ₽</dd></div>
+            <div><dt>Чай травяной с шиповником</dt><dd>120 ₽</dd></div>
+            <div><dt>Комплексный обед</dt><dd>710 ₽</dd></div>
+          </dl>
+        </div>
+        <img src={asset("/images/cafe-menu-hero-food.png")} alt="" loading="lazy" />
+      </section>
+
+      <section class="services-reference-tours" id="tours">
+        <div>
+          <p class="section-kicker">Экскурсии</p>
+          <h2>Маршруты и истории Прибайкалья</h2>
+          <p>Познакомим с Гремячинском, местной историей, традициями и природными достопримечательностями.</p>
+          <button class="button button-secondary" type="button" data-modal-open="tours-modal">Смотреть маршруты</button>
+        </div>
+        <div class="services-reference-tour-cards">
+          <article><strong>Гремячинск: прошлое и настоящее</strong><p>История рыбзавода, старые улицы и локальные факты.</p><span>3-4 часа</span></article>
+          <article><strong>Смотровые точки Байкала</strong><p>Маршрут к видам на воду, горы и сосновые берега.</p><span>4-5 часов</span></article>
+          <article><strong>Термальные источники</strong><p>Поездка с остановками, отдыхом и спокойным темпом.</p><span>4-6 часов</span></article>
+          <article><strong>Сакральные места Байкала</strong><p>Места силы, легенды региона и уважительный рассказ.</p><span>5-6 часов</span></article>
+        </div>
+      </section>
+
+      <section class="services-reference-gifts" id="gifts">
+        <div class="services-reference-copy">
+          <p class="section-kicker">Сувениры</p>
+          <h2>Подарки из Прибайкалья</h2>
+          <p>Памятные вещи и локальные изделия от мастеров региона — увезите с собой частичку Байкала.</p>
+          <button class="button button-primary" type="button" data-modal-open="gifts-modal">Смотреть сувениры</button>
+        </div>
+        <div class="services-reference-gift-grid">
+          <article>
+            <img src={asset("/images/services/services-souvenirs-still-life.webp")} alt="" loading="lazy" />
+            <span>Локальные изделия</span>
+          </article>
+          <article>
+            <img src={asset("/images/gallery/gallery-09.jpg")} alt="" loading="lazy" />
+            <span>История места</span>
+          </article>
+          <article>
+            <img src={asset("/images/gallery/gallery-10.jpg")} alt="" loading="lazy" />
+            <span>Память о Байкале</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="services-reference-questions">
+        <p class="section-kicker">Популярные вопросы</p>
+        <details open>
+          <summary>Как забронировать номер?</summary>
+          <p>Оставьте заявку через кнопку связи, и мы уточним дату, количество гостей и подходящий корпус.</p>
+        </details>
+        <details>
+          <summary>Можно приехать с детьми?</summary>
+          <p>Да, формат подходит для семейных поездок. Детали размещения лучше согласовать заранее.</p>
+        </details>
+        <details>
+          <summary>Есть ли парковка и Wi-Fi?</summary>
+          <p>На территории предусмотрена парковка, Wi-Fi доступен для гостей комплекса.</p>
+        </details>
+        <details>
+          <summary>Как добраться до Гремячинска?</summary>
+          <p>При бронировании подскажем маршрут и удобный способ добраться до комплекса.</p>
+        </details>
+      </section>
+
+      <section class="services-reference-bottom">
+        <div>
+          <p class="section-kicker">Готовы к отдыху на Байкале?</p>
+          <h2>Свяжитесь с нами — подберём лучший формат</h2>
+        </div>
+        <a class="button button-primary" href={`${home}#booking`}>Связаться</a>
+      </section>
+    </main>
+
+    <div class="service-modal" id="stay-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="stay-modal-title">
+      <div class="service-modal__overlay" data-modal-close></div>
+      <div class="service-modal__dialog">
+        <button class="service-modal__close" type="button" aria-label="Закрыть" data-modal-close></button>
+        <div class="service-modal__media">
+          <img src={asset("/images/history/history-main.png")} alt="" loading="lazy" />
+        </div>
+        <div class="service-modal__content">
+          <p class="section-kicker">Проживание</p>
+          <h2 id="stay-modal-title">Гостевой дом «У Озера»</h2>
+          <p>
+            Парк-отель расположен на территории культурно-туристического комплекса «Моё Прибайкалье».
+            Здесь история Байкала и Гремячинского рыбзавода соединяется с современным комфортом.
+          </p>
+          <div class="service-modal__stats">
+            <span><strong>26</strong> номеров</span>
+            <span><strong>70-75</strong> гостей</span>
+            <span><strong>2</strong> корпуса</span>
+          </div>
+          <h3>Корпус №1 — номера 5-й категории</h3>
+          <ul>
+            <li>14 номеров в историческом здании бывшего засолочного цеха 1933 года.</li>
+            <li>Общий санузел на этаже: душевые, раковины и туалеты.</li>
+            <li>Пандус, просторные душевые и санузлы для гостей с ограниченными возможностями здоровья.</li>
+            <li>Тёплая терраса с видовыми окнами на Байкал.</li>
+          </ul>
+          <h3>Корпус №2 — номера 1-й категории</h3>
+          <ul>
+            <li>12 номеров над бывшим ледником-холодильником рыбзавода.</li>
+            <li>Санузел в каждом номере: душевая кабина, раковина и туалет.</li>
+            <li>Двухместные и трёхместные номера, вместимость корпуса — 30 человек.</li>
+          </ul>
+          <a class="button button-primary" href={`${home}#booking`}>Забронировать проживание</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-modal" id="bath-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="bath-modal-title">
+      <div class="service-modal__overlay" data-modal-close></div>
+      <div class="service-modal__dialog">
+        <button class="service-modal__close" type="button" aria-label="Закрыть" data-modal-close></button>
+        <div class="service-modal__media">
+          <img src={asset("/images/gallery/gallery-08.jpg")} alt="" loading="lazy" />
+        </div>
+        <div class="service-modal__content">
+          <p class="section-kicker">Баня</p>
+          <h2 id="bath-modal-title">Рыбацкая баня на дровах</h2>
+          <p>
+            Настоящая баня для отдыха после насыщенного дня на Байкале: живая парная, тепло дерева,
+            комната отдыха и авторский чай по мотивам прибайкальских рецептов.
+          </p>
+          <div class="service-modal__grid">
+            <article>
+              <h3>Парная</h3>
+              <p>Рассчитана на 3 человека. Живой пар, древесное тепло и спокойная атмосфера русской бани.</p>
+            </article>
+            <article>
+              <h3>Зона отдыха</h3>
+              <p>Можно перевести дух, пообщаться, а по запросу организовать лёгкий ужин или перекус.</p>
+            </article>
+            <article>
+              <h3>Авторский чай</h3>
+              <p>Травяной сбор по рецептам прибайкальских знахарей и берегини Гремячихи.</p>
+            </article>
+          </div>
+          <h3>В стоимость входит</h3>
+          <ul>
+            <li>банный веник;</li>
+            <li>заварник прибайкальского чая на выбор;</li>
+            <li>простыни;</li>
+            <li>банные шапочки для защиты от жара.</li>
+          </ul>
+          <a class="button button-primary" href={`${home}#booking`}>Забронировать баню</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-modal service-modal--menu" id="menu-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="menu-modal-title">
+      <div class="service-modal__overlay" data-modal-close></div>
+      <div class="service-modal__dialog">
+        <button class="service-modal__close" type="button" aria-label="Закрыть" data-modal-close></button>
+        <div class="service-modal__content">
+          <p class="section-kicker">Питание</p>
+          <h2 id="menu-modal-title">Меню кафе</h2>
+          <p>Домашняя кухня для гостей комплекса: завтраки, супы, горячие блюда, салаты, напитки, комплексное питание и банкетные предложения.</p>
+
+          <nav class="menu-modal-nav" aria-label="Разделы меню">
+            <a href="#menu-popular">Популярное</a>
+            <a href="#menu-salads">Салаты</a>
+            <a href="#menu-soups">Супы</a>
+            <a href="#menu-hot">Горячее</a>
+            <a href="#menu-bakery">Выпечка</a>
+            <a href="#menu-drinks">Напитки</a>
+            <a href="#menu-complex">Комплексное питание</a>
+            <a href="#menu-banquet">Банкетное</a>
+          </nav>
+
+          <div class="live-menu">
+            <section class="live-menu__section live-menu__section--featured" id="menu-popular">
+              <div class="live-menu__heading">
+                <img src={asset("/images/menu-icons/menu-complex.png")} alt="" aria-hidden="true" loading="lazy" />
+                <h3>Популярное</h3>
+              </div>
+              <div class="live-menu__list">
+                <article><div><h4>Борщ</h4><p>Порция 300 гр.</p></div><strong>250 ₽</strong></article>
+                <article><div><h4>Пельмени домашние</h4><p>Порция 10 шт.</p></div><strong>300 ₽</strong></article>
+                <article><div><h4>Уха</h4><p>Порция 300 гр.</p></div><strong>350 ₽</strong></article>
+                <article><div><h4>Плов</h4><p>Порция 250 гр.</p></div><strong>400 ₽</strong></article>
+                <article><div><h4>Комплексный обед</h4><p>Салат, суп дня, горячее, гарнир, напиток и хлеб</p></div><strong>710 ₽</strong></article>
+              </div>
+            </section>
+
+            <section class="live-menu__section" id="menu-salads">
+              <div class="live-menu__heading">
+                <img src={asset("/images/menu-icons/menu-salad.png")} alt="" aria-hidden="true" loading="lazy" />
+                <h3>Салаты</h3>
+              </div>
+              <div class="live-menu__list">
+                <article><div><h4>Цезарь с курицей</h4><p>Порция 200 гр.</p></div><strong>400 ₽</strong></article>
+                <article><div><h4>Греческий</h4><p>Порция 200 гр.</p></div><strong>290 ₽</strong></article>
+                <article><div><h4>Салат с говяжьим языком</h4><p>Порция 200 гр.</p></div><strong>400 ₽</strong></article>
+                <article><div><h4>Салат сезонный из свежих овощей</h4><p>Порция 150 гр.</p></div><strong>220 ₽</strong></article>
+                <article><div><h4>Кимчи</h4><p>Порция 100 гр.</p></div><strong>150 ₽</strong></article>
+                <article><div><h4>Морковь по-корейски</h4><p>Порция 100 гр.</p></div><strong>150 ₽</strong></article>
+                <article><div><h4>Свекольный салат</h4><p>Порция 100 гр.</p></div><strong>150 ₽</strong></article>
+              </div>
+            </section>
+
+            <section class="live-menu__section" id="menu-soups">
+              <div class="live-menu__heading">
+                <img src={asset("/images/menu-icons/menu-soup.png")} alt="" aria-hidden="true" loading="lazy" />
+                <h3>Супы</h3>
+              </div>
+              <div class="live-menu__list">
+                <article><div><h4>Борщ</h4><p>Порция 300 гр.</p></div><strong>250 ₽</strong></article>
+                <article><div><h4>Солянка сборная мясная</h4><p>Порция 300 гр.</p></div><strong>350 ₽</strong></article>
+                <article><div><h4>Пельмени домашние</h4><p>10 шт.</p></div><strong>300 ₽</strong></article>
+                <article><div><h4>Уха</h4><p>Порция 300 гр.</p></div><strong>350 ₽</strong></article>
+                <article><div><h4>Лагман</h4><p>Порция 300 гр.</p></div><strong>400 ₽</strong></article>
+              </div>
+            </section>
+
+            <section class="live-menu__section" id="menu-hot">
+              <div class="live-menu__heading">
+                <img src={asset("/images/menu-icons/menu-hot.png")} alt="" aria-hidden="true" loading="lazy" />
+                <h3>Горячие блюда</h3>
+              </div>
+              <div class="live-menu__list">
+                <article><div><h4>Жарёха со свининой и картофелем</h4><p>Порция 100/150 гр.</p></div><strong>400 ₽</strong></article>
+                <article><div><h4>Паста карбонара</h4><p>Порция 200 гр.</p></div><strong>350 ₽</strong></article>
+                <article><div><h4>Курица в грибном соусе с рисом</h4><p>Порция 100/150 гр.</p></div><strong>350 ₽</strong></article>
+                <article><div><h4>Картофель фри</h4><p>Порция 100 гр.</p></div><strong>200 ₽</strong></article>
+                <article><div><h4>Куриные наггетсы</h4><p>6 шт.</p></div><strong>200 ₽</strong></article>
+                <article><div><h4>Бифштекс с яйцом</h4><p>Порция 100/50 гр.</p></div><strong>300 ₽</strong></article>
+                <article><div><h4>Котлета рыбная</h4><p>Порция 90 гр.</p></div><strong>200 ₽</strong></article>
+                <article><div><h4>Котлета куриная в панировке</h4><p>Порция 90 гр.</p></div><strong>200 ₽</strong></article>
+                <article><div><h4>Цуйван</h4><p>Порция 250 гр.</p></div><strong>350 ₽</strong></article>
+                <article><div><h4>Рис отварной</h4><p>Порция 100 гр.</p></div><strong>150 ₽</strong></article>
+                <article><div><h4>Плов</h4><p>Порция 250 гр.</p></div><strong>400 ₽</strong></article>
+                <article><div><h4>Куриные крылышки KFC</h4><p>Острые / неострые, 10 шт.</p></div><strong>500 ₽</strong></article>
+              </div>
+            </section>
+
+            <section class="live-menu__section" id="menu-bakery">
+              <div class="live-menu__heading">
+                <img src={asset("/images/menu-icons/menu-bakery.png")} alt="" aria-hidden="true" loading="lazy" />
+                <h3>Выпечка</h3>
+              </div>
+              <div class="live-menu__list">
+                <article><div><h4>Пирожки</h4><p>1 шт.</p></div><strong>80 ₽</strong></article>
+                <article><div><h4>Беляш</h4><p>1 шт.</p></div><strong>150 ₽</strong></article>
+                <article><div><h4>Чебурек</h4><p>1 шт.</p></div><strong>150 ₽</strong></article>
+                <article><div><h4>Сырники</h4><p>С яблочным джемом, сметаной или сгущенным молоком, 2 шт.</p></div><strong>250 ₽</strong></article>
+                <article><div><h4>Хлеб</h4><p>1 кусочек</p></div><strong>10 ₽</strong></article>
+                <article><div><h4>Оладьи</h4><p>С повидлом или сгущенным молоком, 2 шт.</p></div><strong>250 ₽</strong></article>
+              </div>
+            </section>
+
+            <section class="live-menu__section" id="menu-drinks">
+              <div class="live-menu__heading">
+                <img src={asset("/images/menu-icons/menu-drinks.png")} alt="" aria-hidden="true" loading="lazy" />
+                <h3>Напитки</h3>
+              </div>
+              <div class="live-menu__list">
+                <article><div><h4>Морс брусничный / облепиховый</h4><p>200 гр.</p></div><strong>90 ₽</strong></article>
+                <article><div><h4>Компот из сухофруктов</h4><p>200 гр.</p></div><strong>80 ₽</strong></article>
+                <article><div><h4>Чай чёрный</h4><p>200 гр.</p></div><strong>50 ₽</strong></article>
+                <article><div><h4>Чай чёрный с молоком</h4><p>200 гр.</p></div><strong>50 ₽</strong></article>
+                <article><div><h4>Чай чёрный с лимоном и сахаром</h4><p>200 гр.</p></div><strong>60 ₽</strong></article>
+                <article><div><h4>Чай зелёный с молоком</h4><p>200 гр.</p></div><strong>60 ₽</strong></article>
+                <article><div><h4>Кофе растворимый</h4><p>200 гр.</p></div><strong>80 ₽</strong></article>
+                <article><div><h4>Кипяток</h4><p>200 гр.</p></div><strong>20 ₽</strong></article>
+              </div>
+            </section>
+
+            <section class="live-menu__section live-menu__section--wide" id="menu-complex">
+              <div class="live-menu__heading">
+                <img src={asset("/images/menu-icons/menu-complex.png")} alt="" aria-hidden="true" loading="lazy" />
+                <h3>Комплексное питание</h3>
+              </div>
+              <div class="live-menu__plans">
+                <article>
+                  <img src={asset("/images/menu-icons/menu-breakfast.png")} alt="" aria-hidden="true" loading="lazy" />
+                  <strong>Комплексный завтрак</strong>
+                  <span>290 ₽</span>
+                  <p>Горячее на выбор: каша дня на молоке со сливочным маслом или яичница-глазунья с сосиской. Выпечка, напиток и хлеб.</p>
+                </article>
+                <article>
+                  <img src={asset("/images/menu-icons/menu-complex.png")} alt="" aria-hidden="true" loading="lazy" />
+                  <strong>Комплексный обед</strong>
+                  <span>710 ₽</span>
+                  <p>Салат, суп дня, горячее дня, гарнир, напиток и хлеб.</p>
+                </article>
+                <article>
+                  <img src={asset("/images/menu-icons/menu-hot.png")} alt="" aria-hidden="true" loading="lazy" />
+                  <strong>Комплексный ужин</strong>
+                  <span>500 ₽</span>
+                  <p>Горячее дня, гарнир, выпечка, напиток и хлеб.</p>
+                </article>
+              </div>
+            </section>
+
+            <section class="live-menu__section live-menu__section--wide" id="menu-banquet">
+              <div class="live-menu__heading">
+                <img src={asset("/images/menu-icons/menu-banquet.png")} alt="" aria-hidden="true" loading="lazy" />
+                <h3>Банкетное предложение</h3>
+              </div>
+              <div class="live-menu__list">
+                <article><div><h4>Цезарь с креветками</h4><p>Порция 200 гр.</p></div><strong>600 ₽</strong></article>
+                <article><div><h4>Оливье</h4><p>Порция 350 гр.</p></div><strong>550 ₽</strong></article>
+                <article><div><h4>Салат со свиной рулькой</h4><p>Порция 300 гр.</p></div><strong>600 ₽</strong></article>
+                <article><div><h4>Рыбное ассорти</h4><p>Форель с/с, омуль, картофель, зелень, маслины</p></div><strong>1150 ₽</strong></article>
+                <article><div><h4>Мясное ассорти</h4><p>Язык, буженина, куриный рулет, горчица, зелень</p></div><strong>1100 ₽</strong></article>
+                <article><div><h4>Овощное ассорти</h4><p>Огурцы, помидоры, болгарский перец, дайкон, зелень</p></div><strong>450 ₽</strong></article>
+                <article><div><h4>Фруктовая тарелка</h4><p>Порция 500 гр.</p></div><strong>900 ₽</strong></article>
+                <article><div><h4>Сырная тарелка</h4><p>Бри, мёд, виноград, орехи, фета, сыр копчёный, моцарелла, ламбер</p></div><strong>1500 ₽</strong></article>
+                <article><div><h4>Шашлык из свиной шеи</h4><p>Порция 300 гр.</p></div><strong>600 ₽</strong></article>
+                <article><div><h4>Плов</h4><p>Порция 1000 гр.</p></div><strong>2300 ₽</strong></article>
+                <article><div><h4>Ассорти «Бурятия»</h4><p>Буузы варёные и жареные, хушууры мясные и овощные, соус, горчица</p></div><strong>1700 ₽</strong></article>
+              </div>
+            </section>
+          </div>
+
+          <div class="live-menu__footer">
+            <p>Стоимость и наличие блюд лучше уточнить при бронировании, особенно для группового питания.</p>
+            <a class="button button-primary" href={`${home}#booking`}>Обсудить питание</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-modal" id="tours-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="tours-modal-title">
+      <div class="service-modal__overlay" data-modal-close></div>
+      <div class="service-modal__dialog service-modal__dialog--compact">
+        <button class="service-modal__close" type="button" aria-label="Закрыть" data-modal-close></button>
+        <div class="service-modal__content">
+          <p class="section-kicker">Экскурсии</p>
+          <h2 id="tours-modal-title">Маршруты и истории Прибайкалья</h2>
+          <p>Можно обсудить прогулки, знакомство с Гремячинском, смотровые точки, историю села и обряд приветствия Байкала.</p>
+          <div class="service-modal__tags">
+            <span>история села</span>
+            <span>смотровая площадка</span>
+            <span>программа для групп</span>
+          </div>
+          <a class="button button-primary" href={`${home}#booking`}>Узнать маршруты</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-modal" id="gifts-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="gifts-modal-title">
+      <div class="service-modal__overlay" data-modal-close></div>
+      <div class="service-modal__dialog service-modal__dialog--compact">
+        <button class="service-modal__close" type="button" aria-label="Закрыть" data-modal-close></button>
+        <div class="service-modal__content">
+          <p class="section-kicker">Сувениры</p>
+          <h2 id="gifts-modal-title">Подарки из Прибайкалья</h2>
+          <p>Сувениры и локальные изделия можно подобрать на месте: для себя, гостей или как память о поездке к Байкалу.</p>
+          <div class="service-modal__tags">
+            <span>подарки гостям</span>
+            <span>локальные изделия</span>
+            <span>память о поездке</span>
+          </div>
+          <a class="button button-primary" href={`${home}#booking`}>Уточнить сувениры</a>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer" id="contacts">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="logo" href={home} aria-label="Моё Прибайкалье">
+            <span class="logo-image" aria-hidden="true"></span>
+          </a>
+
+          <address class="contacts-list">
+            <a href="https://yandex.ru/maps/?text=%D1%83%D0%BB.%20%D0%91%D0%B5%D1%80%D0%B5%D0%B3%D0%BE%D0%B2%D0%B0%D1%8F%202%D0%91%2C%20%D1%81%D0%B5%D0%BB%D0%BE%20%D0%93%D1%80%D0%B5%D0%BC%D1%8F%D1%87%D0%B8%D0%BD%D1%81%D0%BA%2C%20%D0%9F%D1%80%D0%B8%D0%B1%D0%B0%D0%B9%D0%BA%D0%B0%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%B9%20%D1%80%D0%B0%D0%B9%D0%BE%D0%BD%2C%20%D0%A0%D0%B5%D1%81%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D0%BA%D0%B0%20%D0%91%D1%83%D1%80%D1%8F%D1%82%D0%B8%D1%8F" target="_blank" rel="noreferrer">
+              <span aria-hidden="true">⌖</span>
+              ул. Береговая 2Б,<br />село Гремячинск,<br />Прибайкальский район,<br />Республика Бурятия
+            </a>
+            <a href="tel:+79247761161">
+              <span aria-hidden="true">☎</span>
+              +7 (924) 776-1161
+            </a>
+            <a href="mailto:brcbs@bk.ru">
+              <span aria-hidden="true">✉</span>
+              brcbs@bk.ru
+            </a>
+          </address>
+        </div>
+
+        <nav class="footer-nav" aria-label="Навигация в подвале">
+          <div>
+            <a class="footer-nav-title" href={`${home}#about`}>О месте</a>
+            <a href={`${home}#about`}>Команда</a>
+            <a href={`${home}#about`}>Документы</a>
+          </div>
+          <div>
+            <a class="footer-nav-title" href={asset("/services")}>Услуги</a>
+            <a href={asset("/services#stay")}>Проживание</a>
+            <a href={asset("/services#bath")}>Бани</a>
+            <a href={asset("/services#food")}>Питание</a>
+          </div>
+          <div>
+            <a class="footer-nav-title" href={asset("/history")}>История</a>
+            <a href={asset("/history#chronicle")}>Фотохроника</a>
+            <a href={asset("/history#people")}>Люди и традиции</a>
+          </div>
+          <div>
+            <a class="footer-nav-title" href={asset("/press")}>Пресса о нас</a>
+            <a href={asset("/press#news")}>Новости</a>
+            <a href={asset("/press#publications")}>Публикации</a>
+            <a href={asset("/press#media")}>СМИ о нас</a>
+          </div>
+          <div>
+            <a class="footer-nav-title" href={`${home}#gallery`}>Фотогалерея</a>
+            <a href={`${home}#gallery`}>Природа Байкала</a>
+            <a href={`${home}#gallery`}>Времена года</a>
+          </div>
+          <div>
+            <a class="footer-nav-title" href="#contacts">Контакты</a>
+            <a href="https://yandex.ru/maps/?text=%D1%83%D0%BB.%20%D0%91%D0%B5%D1%80%D0%B5%D0%B3%D0%BE%D0%B2%D0%B0%D1%8F%202%D0%91%2C%20%D1%81%D0%B5%D0%BB%D0%BE%20%D0%93%D1%80%D0%B5%D0%BC%D1%8F%D1%87%D0%B8%D0%BD%D1%81%D0%BA%2C%20%D0%9F%D1%80%D0%B8%D0%B1%D0%B0%D0%B9%D0%BA%D0%B0%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%B9%20%D1%80%D0%B0%D0%B9%D0%BE%D0%BD%2C%20%D0%A0%D0%B5%D1%81%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D0%BA%D0%B0%20%D0%91%D1%83%D1%80%D1%8F%D1%82%D0%B8%D1%8F" target="_blank" rel="noreferrer">Как добраться</a>
+            <a href="tel:+79247761161">Контакты</a>
+            <a href="mailto:brcbs@bk.ru">Обратная связь</a>
+          </div>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Моё Прибайкалье<br />Культурно-туристический центр</p>
+      </div>
+    </footer>
+
+    <div class="mobile-menu" aria-hidden="true">
+      <div class="mobile-menu__overlay" data-menu-close></div>
+      <nav class="mobile-menu__panel" aria-label="Мобильное меню">
+        <button class="mobile-menu__close" type="button" aria-label="Закрыть меню" data-menu-close>
+          <span></span>
+          <span></span>
+        </button>
+        <a href={`${home}#about`} data-menu-close>О месте</a>
+        <a href={asset("/services")} data-menu-close>Услуги</a>
+        <a href={asset("/menu")} data-menu-close>Кафе</a>
+        <a href={asset("/history")} data-menu-close>История</a>
+        <a href={asset("/events")} data-menu-close>Афиша</a>
+        <a href={asset("/press")} data-menu-close>Пресса о нас</a>
+        <a href={`${home}#gallery`} data-menu-close>Галерея</a>
+        <a href={`${home}#contacts`} data-menu-close>Контакты</a>
+        <a class="mobile-menu__booking" href={`${home}#booking`} data-menu-close>Забронировать</a>
+        <div class="mobile-menu__contacts">
+          <a href="tel:+79247761161" data-menu-close>+7 (924) 776-1161</a>
+        </div>
+      </nav>
+    </div>
+
+    <script>
+      const mobileMenu = document.querySelector(".mobile-menu");
+      const menuOpenButtons = document.querySelectorAll("[data-menu-open]");
+      const menuCloseButtons = document.querySelectorAll("[data-menu-close]");
+
+      const openMobileMenu = () => {
+        mobileMenu?.classList.add("is-open");
+        mobileMenu?.setAttribute("aria-hidden", "false");
+        document.body.classList.add("menu-open");
+        menuOpenButtons.forEach((button) => button.setAttribute("aria-expanded", "true"));
+      };
+
+      const closeMobileMenu = () => {
+        mobileMenu?.classList.remove("is-open");
+        mobileMenu?.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("menu-open");
+        menuOpenButtons.forEach((button) => button.setAttribute("aria-expanded", "false"));
+      };
+
+      menuOpenButtons.forEach((button) => {
+        button.addEventListener("click", openMobileMenu);
+      });
+
+      menuCloseButtons.forEach((button) => {
+        button.addEventListener("click", closeMobileMenu);
+      });
+
+      const modalOpenButtons = document.querySelectorAll("[data-modal-open]");
+      const modals = document.querySelectorAll(".service-modal");
+      let activeModal = null;
+
+      const closeModal = () => {
+        if (!activeModal) return;
+        activeModal.classList.remove("is-open");
+        activeModal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("modal-open");
+        activeModal = null;
+      };
+
+      modalOpenButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const modal = document.getElementById(button.dataset.modalOpen);
+          if (!modal) return;
+          closeModal();
+          activeModal = modal;
+          activeModal.classList.add("is-open");
+          activeModal.setAttribute("aria-hidden", "false");
+          document.body.classList.add("modal-open");
+          activeModal.querySelector(".service-modal__close")?.focus();
+        });
+      });
+
+      modals.forEach((modal) => {
+        modal.querySelectorAll("[data-modal-close]").forEach((button) => {
+          button.addEventListener("click", closeModal);
+        });
+      });
+
+      window.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          if (activeModal) closeModal();
+          if (mobileMenu?.classList.contains("is-open")) closeMobileMenu();
+        }
+      });
+    </script>
+  </body>
+</html>

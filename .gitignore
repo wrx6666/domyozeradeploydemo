@@ -11,6 +11,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+.codex-dev-server*.log
 
 
 # environment variables
@@ -22,3 +23,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# temporary workspace files
+tmp/

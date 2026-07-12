@@ -1,10 +1,11 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
+const site = process.env.SITE_URL || 'https://example.com';
+
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://wrx6666.github.io',
-  base: '/domyozeradeploydemo',
+  site,
   compressHTML: false,
   vite: {
     build: {
