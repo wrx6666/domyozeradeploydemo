@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import BookingModal from "../components/BookingModal.astro";
 ---
 <!DOCTYPE html>
 <html lang="ru">
@@ -328,6 +329,8 @@ import "../styles/global.css";
       </div>
     </footer>
 
+    <BookingModal />
+
     <div class="mobile-menu" aria-hidden="true">
       <div class="mobile-menu__overlay" data-menu-close></div>
       <nav class="mobile-menu__panel" aria-label="Мобильное меню">
@@ -343,10 +346,6 @@ import "../styles/global.css";
         <a href="/press" data-menu-close>Пресса о нас</a>
         <a href="/#gallery" data-menu-close>Галерея</a>
         <a href="/#contacts" data-menu-close>Контакты</a>
-        <a class="mobile-menu__booking" href="/#booking" data-menu-close>Забронировать</a>
-        <div class="mobile-menu__contacts">
-          <a href="tel:+79247761161" data-menu-close>+7 (924) 776-1161</a>
-        </div>
       </nav>
     </div>
 

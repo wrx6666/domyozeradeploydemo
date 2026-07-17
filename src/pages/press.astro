@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import BookingModal from "../components/BookingModal.astro";
 
 const assetBase = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
@@ -9,57 +10,57 @@ const home = assetBase;
 
 const publications = [
   {
-    type: "РСЃС‚РѕСЂРёСЏ РїСЂРѕРµРєС‚Р°",
-    source: "РњРѕР№ Р‘РёР·РЅРµСЃ",
-    title: "РўСѓСЂР±РёР·РЅРµСЃ РґРѕР»Р¶РµРЅ СЂР°Р±РѕС‚Р°С‚СЊ РЅР° РїРѕРІС‹С€РµРЅРёРµ РїСЂРёРІР»РµРєР°С‚РµР»СЊРЅРѕСЃС‚Рё СЂРµРіРёРѕРЅР°",
+    type: "История проекта",
+    source: "Мой Бизнес",
+    title: "Турбизнес должен работать на повышение привлекательности региона",
     text:
-      "РСЃС‚РѕСЂРёСЏ СЂР°Р·РІРёС‚РёСЏ РіРѕСЃС‚РµРІРѕРіРѕ РґРѕРјР° В«РЈ РћР·РµСЂР°В», РїРѕРґРґРµСЂР¶РєРё РїСЂРµРґРїСЂРёРЅРёРјР°С‚РµР»СЊСЃС‚РІР° Рё С‚СѓСЂРёР·РјР° Сѓ Р‘Р°Р№РєР°Р»Р°.",
-    image: "/images/history/gremyachinsk-viewpoint-hero.jpg",
+      "История развития гостевого дома «У Озера», поддержки предпринимательства и туризма у Байкала.",
+    image: "/images/press/press-post-01.png",
     url: "https://msp03.ru/news/istorii-uspekha/turbiznes-dolzhen-rabotat-na-povyshenie-privlekatelnosti-regiona/",
     featured: true,
   },
   {
-    type: "Р“РѕСЃРїСЂРѕРµРєС‚",
-    source: "РњРёРЅСЌРєРѕРЅРѕРјСЂР°Р·РІРёС‚РёСЏ Р РѕСЃСЃРёРё",
-    title: "Рћ СЂР°Р·РІРёС‚РёРё РїСЂРѕРµРєС‚Р° РІ СЂР°РјРєР°С… РЅР°С†РёРѕРЅР°Р»СЊРЅРѕРіРѕ РїСЂРѕРµРєС‚Р° В«РўСѓСЂРёР·Рј Рё РёРЅРґСѓСЃС‚СЂРёСЏ РіРѕСЃС‚РµРїСЂРёРёРјСЃС‚РІР°В»",
+    type: "Госпроект",
+    source: "Минэкономразвития России",
+    title: "О развитии проекта в рамках национального проекта «Туризм и индустрия гостеприимства»",
     text:
-      "РџСѓР±Р»РёРєР°С†РёСЏ Рѕ СЂР°Р·РІРёС‚РёРё РћРћРћ В«Р‘Р°Р№РєР°Р»СЊСЃРєРёР№ СЂРµРіРёРѕРЅР°Р»СЊРЅС‹Р№ С†РµРЅС‚СЂ РґРµР»РѕРІРѕРіРѕ СЃРѕРїСЂРѕРІРѕР¶РґРµРЅРёСЏВ» Рё С‚СѓСЂРёСЃС‚РёС‡РµСЃРєРѕРіРѕ РїСЂРѕРµРєС‚Р°.",
-    image: "/images/gallery/gallery-08.jpg",
+      "Публикация о развитии ООО «Байкальский региональный центр делового сопровождения» и туристического проекта.",
+    image: "/images/press/press-post-02.png",
     url: "https://t.me/minec_tourism/1608",
   },
   {
-    type: "РЎРѕС†РёР°Р»СЊРЅР°СЏ Р°РєС‚РёРІРЅРѕСЃС‚СЊ",
-    source: "РњРёРЅРёСЃС‚РµСЂСЃС‚РІРѕ С‚СѓСЂРёР·РјР° Р‘СѓСЂСЏС‚РёРё",
-    title: "РЎРѕС†РёР°Р»СЊРЅР°СЏ Р°РєС‚РёРІРЅРѕСЃС‚СЊ РѕСЂРіР°РЅРёР·Р°С†РёРё Рё РіРѕСЃС‚РµРІРѕРіРѕ РґРѕРјР° В«РЈ РћР·РµСЂР°В»",
+    type: "Социальная активность",
+    source: "Министерство туризма Бурятии",
+    title: "Социальная активность организации и гостевого дома «У Озера»",
     text:
-      "РњР°С‚РµСЂРёР°Р» Рѕ СЃРѕС†РёР°Р»СЊРЅРѕР№ СЂР°Р±РѕС‚Рµ, СѓС‡Р°СЃС‚РёРё РІ Р¶РёР·РЅРё С‚РµСЂСЂРёС‚РѕСЂРёРё Рё РёРЅРёС†РёР°С‚РёРІР°С… РіРѕСЃС‚РµРІРѕРіРѕ РґРѕРјР°.",
+      "Материал о социальной работе, участии в жизни территории и инициативах гостевого дома.",
     image: "/images/gallery/gallery-05.jpg",
     url: "https://egov-buryatia.ru/minturizm/press_center/news/detail.php?ID=176395",
   },
   {
-    type: "РњРѕР»РѕРґРµР¶РЅС‹Рµ РёРЅРёС†РёР°С‚РёРІС‹",
+    type: "Молодежные инициативы",
     source: "GreenEdu",
-    title: "РџРѕРґРґРµСЂР¶РєР° Р’СЃРµСЂРѕСЃСЃРёР№СЃРєРѕР№ РѕР»РёРјРїРёР°РґС‹ РїРѕ Р‘Р°Р№РєР°Р»РѕРІРµРґРµРЅРёСЋ",
+    title: "Поддержка Всероссийской олимпиады по Байкаловедению",
     text:
-      "РџРѕСЃС‚ Рѕ РїРѕРґРґРµСЂР¶РєРµ РјРѕР»РѕРґРµР¶РЅС‹С… РёРЅРёС†РёР°С‚РёРІ Рё СѓС‡Р°СЃС‚РёРё РіРѕСЃС‚РµРІРѕРіРѕ РґРѕРјР° В«РЈ РћР·РµСЂР°В» РІ РїСЂРѕСЃРІРµС‚РёС‚РµР»СЊСЃРєРёС… РїСЂРѕРµРєС‚Р°С….",
+      "Пост о поддержке молодежных инициатив и участии гостевого дома «У Озера» в просветительских проектах.",
     image: "/images/history/history-people.png",
     url: "http://special.greenedu.ru/news/?record_id=1893",
   },
   {
-    type: "Р”РѕСЃС‚РёР¶РµРЅРёРµ",
-    source: "Р’РѕСЃС‚РѕРє-РўРµР»РµРёРЅС„РѕСЂРј",
-    title: "Р¤РёРЅР°Р» РєРѕРЅРєСѓСЂСЃР° В«РњР°СЃС‚РµСЂР° РіРѕСЃС‚РµРїСЂРёРёРјСЃС‚РІР°В»",
+    type: "Достижение",
+    source: "Восток-Телеинформ",
+    title: "Финал конкурса «Мастера гостеприимства»",
     text:
-      "РџСѓР±Р»РёРєР°С†РёСЏ Рѕ РІС‹С…РѕРґРµ РІ С„РёРЅР°Р» РєРѕРЅРєСѓСЂСЃР° Рё СЂР°Р·РІРёС‚РёРё РіРѕСЃС‚РµРїСЂРёРёРјСЃС‚РІР° РІ РџСЂРёР±Р°Р№РєР°Р»СЊРµ.",
-    image: "/images/services/services-guest-room.webp",
+      "Публикация о выходе в финал конкурса и развитии гостеприимства в Прибайкалье.",
+    image: "/images/press/press-post-05.png",
     url: "https://vtinform.com/news/138/205406/",
   },
   {
-    type: "Р’РёРґРµРѕРёРЅС‚РµСЂРІСЊСЋ",
-    source: "РЎРјРѕС‚СЂРёРј",
-    title: "РРЅС‚РµСЂРІСЊСЋ Рѕ РїСЂРµРґРїСЂРёРЅРёРјР°С‚РµР»СЊСЃС‚РІРµ Рё СЂР°Р±РѕС‚Рµ РІ СЃРµР»СЊСЃРєРѕР№ РјРµСЃС‚РЅРѕСЃС‚Рё",
+    type: "Видеоинтервью",
+    source: "Смотрим",
+    title: "Интервью о предпринимательстве и работе в сельской местности",
     text:
-      "Р’РёРґРµРѕСЂР°Р·РіРѕРІРѕСЂ Рѕ СЂР°Р·РІРёС‚РёРё РїСЂРµРґРїСЂРёРЅРёРјР°С‚РµР»СЊСЃС‚РІР°, Р»РѕРєР°Р»СЊРЅС‹С… РїСЂРѕРµРєС‚Р°С… Рё СЂР°Р±РѕС‚Рµ РІ СЃРµР»СЊСЃРєРѕР№ РјРµСЃС‚РЅРѕСЃС‚Рё.",
+      "Видеоразговор о развитии предпринимательства, локальных проектах и работе в сельской местности.",
     image: "/images/gallery/gallery-10.jpg",
     url: "https://smotrim.ru/video/3040077",
   },
@@ -74,28 +75,28 @@ const regularPublications = publications.filter((item) => item !== featuredPubli
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>РџСЂРµСЃСЃР° Рѕ РЅР°СЃ | РњРѕС‘ РџСЂРёР±Р°Р№РєР°Р»СЊРµ</title>
+    <title>Пресса о нас | Моё Прибайкалье</title>
   </head>
   <body>
     <header class="history-page-header services-page-header">
-      <a class="logo" href={home} aria-label="РњРѕС‘ РџСЂРёР±Р°Р№РєР°Р»СЊРµ">
+      <a class="logo" href={home} aria-label="Моё Прибайкалье">
         <span class="logo-image" aria-hidden="true"></span>
       </a>
 
-      <nav class="nav" aria-label="РќР°РІРёРіР°С†РёСЏ РїРѕ СЃР°Р№С‚Сѓ">
-        <a href={`${home}#about`}>Рћ РјРµСЃС‚Рµ</a>
-        <a href={asset("/services")}>РЈСЃР»СѓРіРё</a>
-        <a href={asset("/menu")}>РљР°С„Рµ</a>
-        <a href={asset("/history")}>РСЃС‚РѕСЂРёСЏ</a>
-        <a href={asset("/events")}>РђС„РёС€Р°</a>
-        <a class="is-active" href={asset("/press")}>РџСЂРµСЃСЃР° Рѕ РЅР°СЃ</a>
-        <a href={`${home}#gallery`}>Р“Р°Р»РµСЂРµСЏ</a>
-        <a href={`${home}#contacts`}>РљРѕРЅС‚Р°РєС‚С‹</a>
+      <nav class="nav" aria-label="Навигация по сайту">
+        <a href={`${home}#about`}>О месте</a>
+        <a href={asset("/services")}>Услуги</a>
+        <a href={asset("/menu")}>Кафе</a>
+        <a href={asset("/history")}>История</a>
+        <a href={asset("/events")}>Афиша</a>
+        <a class="is-active" href={asset("/press")}>Пресса о нас</a>
+        <a href={`${home}#gallery`}>Галерея</a>
+        <a href={`${home}#contacts`}>Контакты</a>
       </nav>
 
       <div class="header-actions">
-        <a class="booking-button" href={`${home}#booking`}>Р—Р°Р±СЂРѕРЅРёСЂРѕРІР°С‚СЊ</a>
-        <button class="menu-button" type="button" aria-label="РћС‚РєСЂС‹С‚СЊ РјРµРЅСЋ" aria-expanded="false" data-menu-open>
+        <a class="booking-button" href={`${home}#booking`}>Забронировать</a>
+        <button class="menu-button" type="button" aria-label="Открыть меню" aria-expanded="false" data-menu-open>
           <span></span>
           <span></span>
           <span></span>
@@ -106,29 +107,26 @@ const regularPublications = publications.filter((item) => item !== featuredPubli
     <main class="press-page">
       <section class="press-page-hero">
         <div class="press-page-hero__content">
-          <p class="section-kicker">РџСЂРµСЃСЃР° Рѕ РЅР°СЃ</p>
-          <h1>Рћ РЅР°СЃ РїРёС€СѓС‚</h1>
+          <p class="section-kicker">Пресса о нас</p>
+          <h1>О нас пишут</h1>
           <p>
-            РџСѓР±Р»РёРєР°С†РёРё, РёРЅС‚РµСЂРІСЊСЋ Рё СѓРїРѕРјРёРЅР°РЅРёСЏ Рѕ РїСЂРѕРµРєС‚Рµ, РіРѕСЃС‚РµРІРѕРј РґРѕРјРµ В«РЈ РћР·РµСЂР°В» Рё СЂР°Р·РІРёС‚РёРё С‚СѓСЂРёР·РјР° РІ РџСЂРёР±Р°Р№РєР°Р»СЊРµ.
+            Публикации, интервью и упоминания о проекте, гостевом доме «У Озера» и развитии туризма в Прибайкалье.
           </p>
-          <a class="press-page-hero__button" href="#publications">РЎРјРѕС‚СЂРµС‚СЊ РїСѓР±Р»РёРєР°С†РёРё</a>
+          <a class="press-page-hero__button" href="#publications">Смотреть публикации</a>
         </div>
-        <div class="press-page-hero__media" aria-label="Р’РёРґ РЅР° Р‘Р°Р№РєР°Р» Рё С‚РµСЂСЂРёС‚РѕСЂРёСЋ РџСЂРёР±Р°Р№РєР°Р»СЊСЏ"></div>
+        <div class="press-page-hero__media" aria-label="Вид на Байкал и территорию Прибайкалья"></div>
       </section>
 
       <section class="press-materials" id="publications">
         <div class="press-materials__heading">
           <div>
-            <p class="section-kicker">РџСѓР±Р»РёРєР°С†РёРё</p>
-            <h2>РџСѓР±Р»РёРєР°С†РёРё Рё РёРЅС‚РµСЂРІСЊСЋ</h2>
+            <p class="section-kicker">Публикации</p>
+            <h2>Публикации и интервью</h2>
           </div>
-          <p>
-            РЎРѕР±СЂР°Р»Рё РІРЅРµС€РЅРёРµ РјР°С‚РµСЂРёР°Р»С‹ Рѕ РїСЂРѕРµРєС‚Рµ Рё Р»СЋРґСЏС…, РєРѕС‚РѕСЂС‹Рµ СЂР°Р·РІРёРІР°СЋС‚ РіРѕСЃС‚РµРІРѕР№ РґРѕРј, Р»РѕРєР°Р»СЊРЅС‹Р№ С‚СѓСЂРёР·Рј Рё РёРЅРёС†РёР°С‚РёРІС‹ Сѓ Р‘Р°Р№РєР°Р»Р°.
-          </p>
         </div>
 
         <article class="press-feature__card" id="media">
-          <a class="press-feature__photo" href={featuredPublication.url} target="_blank" rel="noreferrer" aria-label={`РћС‚РєСЂС‹С‚СЊ РїСѓР±Р»РёРєР°С†РёСЋ: ${featuredPublication.title}`}>
+          <a class="press-feature__photo" href={featuredPublication.url} target="_blank" rel="noreferrer" aria-label={`Открыть публикацию: ${featuredPublication.title}`}>
             <img src={asset(featuredPublication.image)} alt="" loading="lazy" />
           </a>
           <div class="press-feature__body">
@@ -139,8 +137,8 @@ const regularPublications = publications.filter((item) => item !== featuredPubli
             <h2>{featuredPublication.title}</h2>
             <p>{featuredPublication.text}</p>
             <a href={featuredPublication.url} target="_blank" rel="noreferrer">
-              Р§РёС‚Р°С‚СЊ РјР°С‚РµСЂРёР°Р»
-              <span aria-hidden="true">в†—</span>
+              Читать материал
+              <span aria-hidden="true">↗</span>
             </a>
           </div>
         </article>
@@ -148,7 +146,7 @@ const regularPublications = publications.filter((item) => item !== featuredPubli
         <div class="press-materials__grid">
           {regularPublications.map((item, index) => (
             <article class="press-material-card" id={index === 0 ? "news" : index === 2 ? "initiatives" : undefined}>
-              <a class="press-material-card__photo" href={item.url} target="_blank" rel="noreferrer" aria-label={`РћС‚РєСЂС‹С‚СЊ РїСѓР±Р»РёРєР°С†РёСЋ: ${item.title}`}>
+              <a class="press-material-card__photo" href={item.url} target="_blank" rel="noreferrer" aria-label={`Открыть публикацию: ${item.title}`}>
                 <img src={asset(item.image)} alt="" loading="lazy" />
               </a>
               <div class="press-material-card__body">
@@ -159,8 +157,8 @@ const regularPublications = publications.filter((item) => item !== featuredPubli
                 <h3>{item.title}</h3>
                 <p>{item.text}</p>
                 <a href={item.url} target="_blank" rel="noreferrer">
-                  РћС‚РєСЂС‹С‚СЊ РјР°С‚РµСЂРёР°Р»
-                  <span aria-hidden="true">в†—</span>
+                  Открыть материал
+                  <span aria-hidden="true">↗</span>
                 </a>
               </div>
             </article>
@@ -168,102 +166,91 @@ const regularPublications = publications.filter((item) => item !== featuredPubli
         </div>
       </section>
 
-      <section class="press-note">
-        <div>
-          <p class="section-kicker">Р”Р»СЏ СЂРµРґР°РєС†РёР№</p>
-          <h2>Р“РѕС‚РѕРІС‹ РїРѕРјРѕС‡СЊ СЃ РјР°С‚РµСЂРёР°Р»РѕРј Рѕ С‚СѓСЂРёР·РјРµ Сѓ Р‘Р°Р№РєР°Р»Р°</h2>
-        </div>
-        <p>
-          Р•СЃР»Рё РІС‹ РіРѕС‚РѕРІРёС‚Рµ РїСѓР±Р»РёРєР°С†РёСЋ Рѕ РџСЂРёР±Р°Р№РєР°Р»СЊРµ, РіРѕСЃС‚РµРїСЂРёРёРјСЃС‚РІРµ, Р»РѕРєР°Р»СЊРЅС‹С… РїСЂРѕРµРєС‚Р°С… РёР»Рё РѕС‚РґС‹С…Рµ Сѓ Р‘Р°Р№РєР°Р»Р°,
-          РјС‹ РїРѕРјРѕР¶РµРј СЃ С„Р°РєС‚Р°РјРё, РєРѕРјРјРµРЅС‚Р°СЂРёСЏРјРё Рё РІРёР·СѓР°Р»СЊРЅС‹РјРё РјР°С‚РµСЂРёР°Р»Р°РјРё.
-        </p>
-      </section>
+
     </main>
 
     <footer class="footer" id="contacts">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a class="logo" href={home} aria-label="РњРѕС‘ РџСЂРёР±Р°Р№РєР°Р»СЊРµ">
+          <a class="logo" href={home} aria-label="Моё Прибайкалье">
             <span class="logo-image" aria-hidden="true"></span>
           </a>
 
           <address class="contacts-list">
             <a href="https://yandex.ru/maps/?text=%D1%83%D0%BB.%20%D0%91%D0%B5%D1%80%D0%B5%D0%B3%D0%BE%D0%B2%D0%B0%D1%8F%202%D0%91%2C%20%D1%81%D0%B5%D0%BB%D0%BE%20%D0%93%D1%80%D0%B5%D0%BC%D1%8F%D1%87%D0%B8%D0%BD%D1%81%D0%BA%2C%20%D0%9F%D1%80%D0%B8%D0%B1%D0%B0%D0%B9%D0%BA%D0%B0%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%B9%20%D1%80%D0%B0%D0%B9%D0%BE%D0%BD%2C%20%D0%A0%D0%B5%D1%81%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D0%BA%D0%B0%20%D0%91%D1%83%D1%80%D1%8F%D1%82%D0%B8%D1%8F" target="_blank" rel="noreferrer">
-              <span aria-hidden="true">вЊ–</span>
-              СѓР». Р‘РµСЂРµРіРѕРІР°СЏ 2Р‘,<br />СЃРµР»Рѕ Р“СЂРµРјСЏС‡РёРЅСЃРє,<br />РџСЂРёР±Р°Р№РєР°Р»СЊСЃРєРёР№ СЂР°Р№РѕРЅ,<br />Р РµСЃРїСѓР±Р»РёРєР° Р‘СѓСЂСЏС‚РёСЏ
+              <span aria-hidden="true">⌖</span>
+              ул. Береговая 2Б,<br />село Гремячинск,<br />Прибайкальский район,<br />Республика Бурятия
             </a>
             <a href="tel:+79247761161">
-              <span aria-hidden="true">вЋ</span>
+              <span aria-hidden="true">☎</span>
               +7 (924) 776-1161
             </a>
             <a href="mailto:brcbs@bk.ru">
-              <span aria-hidden="true">вњ‰</span>
+              <span aria-hidden="true">✉</span>
               brcbs@bk.ru
             </a>
           </address>
         </div>
 
-        <nav class="footer-nav" aria-label="РќР°РІРёРіР°С†РёСЏ РІ РїРѕРґРІР°Р»Рµ">
+        <nav class="footer-nav" aria-label="Навигация в подвале">
           <div>
-            <a class="footer-nav-title" href={`${home}#about`}>Рћ РјРµСЃС‚Рµ</a>
-            <a href={`${home}#about`}>РљРѕРјР°РЅРґР°</a>
-            <a href={`${home}#about`}>Р”РѕРєСѓРјРµРЅС‚С‹</a>
+            <a class="footer-nav-title" href={`${home}#about`}>О месте</a>
+            <a href={`${home}#about`}>Команда</a>
+            <a href={`${home}#about`}>Документы</a>
           </div>
           <div>
-            <a class="footer-nav-title" href={asset("/services")}>РЈСЃР»СѓРіРё</a>
-            <a href={asset("/services#stay")}>РџСЂРѕР¶РёРІР°РЅРёРµ</a>
-            <a href={asset("/services#bath")}>Р‘Р°РЅРё</a>
-            <a href={asset("/services#food")}>РџРёС‚Р°РЅРёРµ</a>
+            <a class="footer-nav-title" href={asset("/services")}>Услуги</a>
+            <a href={asset("/services#stay")}>Проживание</a>
+            <a href={asset("/services#bath")}>Бани</a>
+            <a href={asset("/services#food")}>Питание</a>
           </div>
           <div>
-            <a class="footer-nav-title" href={asset("/history")}>РСЃС‚РѕСЂРёСЏ</a>
-            <a href={asset("/history#chronicle")}>Р¤РѕС‚РѕС…СЂРѕРЅРёРєР°</a>
-            <a href={asset("/history#people")}>Р›СЋРґРё Рё С‚СЂР°РґРёС†РёРё</a>
+            <a class="footer-nav-title" href={asset("/history")}>История</a>
+            <a href={asset("/history#chronicle")}>Фотохроника</a>
+            <a href={asset("/history#people")}>Люди и традиции</a>
           </div>
           <div>
-            <a class="footer-nav-title" href={asset("/press")}>РџСЂРµСЃСЃР° Рѕ РЅР°СЃ</a>
-            <a href={asset("/press#news")}>РќРѕРІРѕСЃС‚Рё</a>
-            <a href={asset("/press#publications")}>РџСѓР±Р»РёРєР°С†РёРё</a>
-            <a href={asset("/press#media")}>РЎРњР Рѕ РЅР°СЃ</a>
+            <a class="footer-nav-title" href={asset("/press")}>Пресса о нас</a>
+            <a href={asset("/press#news")}>Новости</a>
+            <a href={asset("/press#publications")}>Публикации</a>
+            <a href={asset("/press#media")}>СМИ о нас</a>
           </div>
           <div>
-            <a class="footer-nav-title" href={`${home}#gallery`}>Р¤РѕС‚РѕРіР°Р»РµСЂРµСЏ</a>
-            <a href={`${home}#gallery`}>РџСЂРёСЂРѕРґР° Р‘Р°Р№РєР°Р»Р°</a>
-            <a href={`${home}#gallery`}>Р’СЂРµРјРµРЅР° РіРѕРґР°</a>
+            <a class="footer-nav-title" href={`${home}#gallery`}>Фотогалерея</a>
+            <a href={`${home}#gallery`}>Природа Байкала</a>
+            <a href={`${home}#gallery`}>Времена года</a>
           </div>
           <div>
-            <a class="footer-nav-title" href="#contacts">РљРѕРЅС‚Р°РєС‚С‹</a>
-            <a href="https://yandex.ru/maps/?text=%D1%83%D0%BB.%20%D0%91%D0%B5%D1%80%D0%B5%D0%B3%D0%BE%D0%B2%D0%B0%D1%8F%202%D0%91%2C%20%D1%81%D0%B5%D0%BB%D0%BE%20%D0%93%D1%80%D0%B5%D0%BC%D1%8F%D1%87%D0%B8%D0%BD%D1%81%D0%BA%2C%20%D0%9F%D1%80%D0%B8%D0%B1%D0%B0%D0%B9%D0%BA%D0%B0%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%B9%20%D1%80%D0%B0%D0%B9%D0%BE%D0%BD%2C%20%D0%A0%D0%B5%D1%81%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D0%BA%D0%B0%20%D0%91%D1%83%D1%80%D1%8F%D1%82%D0%B8%D1%8F" target="_blank" rel="noreferrer">РљР°Рє РґРѕР±СЂР°С‚СЊСЃСЏ</a>
-            <a href="tel:+79247761161">РљРѕРЅС‚Р°РєС‚С‹</a>
+            <a class="footer-nav-title" href="#contacts">Контакты</a>
+            <a href="https://yandex.ru/maps/?text=%D1%83%D0%BB.%20%D0%91%D0%B5%D1%80%D0%B5%D0%B3%D0%BE%D0%B2%D0%B0%D1%8F%202%D0%91%2C%20%D1%81%D0%B5%D0%BB%D0%BE%20%D0%93%D1%80%D0%B5%D0%BC%D1%8F%D1%87%D0%B8%D0%BD%D1%81%D0%BA%2C%20%D0%9F%D1%80%D0%B8%D0%B1%D0%B0%D0%B9%D0%BA%D0%B0%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%B9%20%D1%80%D0%B0%D0%B9%D0%BE%D0%BD%2C%20%D0%A0%D0%B5%D1%81%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D0%BA%D0%B0%20%D0%91%D1%83%D1%80%D1%8F%D1%82%D0%B8%D1%8F" target="_blank" rel="noreferrer">Как добраться</a>
+            <a href="tel:+79247761161">Контакты</a>
             <a href="mailto:brcbs@bk.ru">Обратная связь</a>
           </div>
         </nav>
       </div>
 
       <div class="footer-bottom">
-        <p>В© 2026 РњРѕС‘ РџСЂРёР±Р°Р№РєР°Р»СЊРµ<br />РљСѓР»СЊС‚СѓСЂРЅРѕ-С‚СѓСЂРёСЃС‚РёС‡РµСЃРєРёР№ С†РµРЅС‚СЂ</p>
+        <p>© 2026 Моё Прибайкалье<br />Культурно-туристический центр</p>
       </div>
     </footer>
 
+    <BookingModal />
+
     <div class="mobile-menu" aria-hidden="true">
       <div class="mobile-menu__overlay" data-menu-close></div>
-      <nav class="mobile-menu__panel" aria-label="РњРѕР±РёР»СЊРЅРѕРµ РјРµРЅСЋ">
-        <button class="mobile-menu__close" type="button" aria-label="Р—Р°РєСЂС‹С‚СЊ РјРµРЅСЋ" data-menu-close>
+      <nav class="mobile-menu__panel" aria-label="Мобильное меню">
+        <button class="mobile-menu__close" type="button" aria-label="Закрыть меню" data-menu-close>
           <span></span>
           <span></span>
         </button>
-        <a href={`${home}#about`} data-menu-close>Рћ РјРµСЃС‚Рµ</a>
-        <a href={asset("/services")} data-menu-close>РЈСЃР»СѓРіРё</a>
-        <a href={asset("/menu")} data-menu-close>РљР°С„Рµ</a>
-        <a href={asset("/history")} data-menu-close>РСЃС‚РѕСЂРёСЏ</a>
-        <a href={asset("/events")} data-menu-close>РђС„РёС€Р°</a>
-        <a href={asset("/press")} data-menu-close>РџСЂРµСЃСЃР° Рѕ РЅР°СЃ</a>
-        <a href={`${home}#gallery`} data-menu-close>Р“Р°Р»РµСЂРµСЏ</a>
-        <a href={`${home}#contacts`} data-menu-close>РљРѕРЅС‚Р°РєС‚С‹</a>
-        <a class="mobile-menu__booking" href={`${home}#booking`} data-menu-close>Р—Р°Р±СЂРѕРЅРёСЂРѕРІР°С‚СЊ</a>
-        <div class="mobile-menu__contacts">
-          <a href="tel:+79247761161" data-menu-close>+7 (924) 776-1161</a>
-        </div>
+        <a href={`${home}#about`} data-menu-close>О месте</a>
+        <a href={asset("/services")} data-menu-close>Услуги</a>
+        <a href={asset("/menu")} data-menu-close>Кафе</a>
+        <a href={asset("/history")} data-menu-close>История</a>
+        <a href={asset("/events")} data-menu-close>Афиша</a>
+        <a href={asset("/press")} data-menu-close>Пресса о нас</a>
+        <a href={`${home}#gallery`} data-menu-close>Галерея</a>
+        <a href={`${home}#contacts`} data-menu-close>Контакты</a>
       </nav>
     </div>
 

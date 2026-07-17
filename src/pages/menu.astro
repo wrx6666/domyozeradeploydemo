@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import BookingModal from "../components/BookingModal.astro";
 
 const assetBase = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
@@ -300,6 +301,8 @@ const banquetItems = [
 
     </main>
 
+    <BookingModal />
+
     <div class="mobile-menu" aria-hidden="true">
       <div class="mobile-menu__overlay" data-menu-close></div>
       <nav class="mobile-menu__panel" aria-label="Мобильное меню">
@@ -314,7 +317,6 @@ const banquetItems = [
         <a href={asset("/events")} data-menu-close>Афиша</a>
         <a href={asset("/press")} data-menu-close>Пресса о нас</a>
         <a href={`${home}#contacts`} data-menu-close>Контакты</a>
-        <a class="mobile-menu__booking" href={`${home}#booking`} data-menu-close>Забронировать</a>
       </nav>
     </div>
 

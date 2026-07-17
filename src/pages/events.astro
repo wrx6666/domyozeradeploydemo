@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import BookingModal from "../components/BookingModal.astro";
 import { fallbackEvents } from "../data/events";
 
 const assetBase = import.meta.env.BASE_URL.endsWith("/")
@@ -15,28 +16,28 @@ const eventsFeedUrl = import.meta.env.PUBLIC_EVENTS_SHEET_CSV_URL || "";
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>РђС„РёС€Р° | РњРѕС‘ РџСЂРёР±Р°Р№РєР°Р»СЊРµ</title>
+    <title>Афиша | Моё Прибайкалье</title>
   </head>
   <body>
     <header class="history-page-header services-page-header">
-      <a class="logo" href={home} aria-label="РњРѕС‘ РџСЂРёР±Р°Р№РєР°Р»СЊРµ">
+      <a class="logo" href={home} aria-label="Моё Прибайкалье">
         <span class="logo-image" aria-hidden="true"></span>
       </a>
 
-      <nav class="nav" aria-label="РќР°РІРёРіР°С†РёСЏ РїРѕ СЃР°Р№С‚Сѓ">
-        <a href={`${home}#about`}>Рћ РјРµСЃС‚Рµ</a>
-        <a href={asset("/services")}>РЈСЃР»СѓРіРё</a>
-        <a href={asset("/menu")}>РљР°С„Рµ</a>
-        <a href={asset("/history")}>РСЃС‚РѕСЂРёСЏ</a>
-        <a class="is-active" href={asset("/events")}>РђС„РёС€Р°</a>
-        <a href={asset("/press")}>РџСЂРµСЃСЃР° Рѕ РЅР°СЃ</a>
-        <a href={`${home}#gallery`}>Р“Р°Р»РµСЂРµСЏ</a>
-        <a href={`${home}#contacts`}>РљРѕРЅС‚Р°РєС‚С‹</a>
+      <nav class="nav" aria-label="Навигация по сайту">
+        <a href={`${home}#about`}>О месте</a>
+        <a href={asset("/services")}>Услуги</a>
+        <a href={asset("/menu")}>Кафе</a>
+        <a href={asset("/history")}>История</a>
+        <a class="is-active" href={asset("/events")}>Афиша</a>
+        <a href={asset("/press")}>Пресса о нас</a>
+        <a href={`${home}#gallery`}>Галерея</a>
+        <a href={`${home}#contacts`}>Контакты</a>
       </nav>
 
       <div class="header-actions">
-        <a class="booking-button" href={`${home}#booking`}>Р—Р°Р±СЂРѕРЅРёСЂРѕРІР°С‚СЊ</a>
-        <button class="menu-button" type="button" aria-label="РћС‚РєСЂС‹С‚СЊ РјРµРЅСЋ" aria-expanded="false" data-menu-open>
+        <a class="booking-button" href={`${home}#booking`}>Забронировать</a>
+        <button class="menu-button" type="button" aria-label="Открыть меню" aria-expanded="false" data-menu-open>
           <span></span>
           <span></span>
           <span></span>
@@ -47,26 +48,26 @@ const eventsFeedUrl = import.meta.env.PUBLIC_EVENTS_SHEET_CSV_URL || "";
     <main class="events-page">
       <section class="events-page-hero">
         <div class="events-page-hero__copy">
-          <p class="section-kicker">РђС„РёС€Р°</p>
-          <h1>РђС„РёС€Р° СЃРѕР±С‹С‚РёР№</h1>
+          <p class="section-kicker">Афиша</p>
+          <h1>Афиша событий</h1>
           <p>
-            Р‘Р»РёР¶Р°Р№С€РёРµ РІСЃС‚СЂРµС‡Рё, СЌРєСЃРєСѓСЂСЃРёРё Рё СЃРµР·РѕРЅРЅС‹Рµ РїСЂРѕРіСЂР°РјРјС‹ Сѓ Р‘Р°Р№РєР°Р»Р°.
-            Р’С‹Р±РёСЂР°Р№С‚Рµ СЃРѕР±С‹С‚РёРµ, СЃРјРѕС‚СЂРёС‚Рµ РїРѕРґСЂРѕР±РЅРѕСЃС‚Рё Рё РїРµСЂРµС…РѕРґРёС‚Рµ Рє Р·Р°РїРёСЃРё.
+            Ближайшие встречи, экскурсии и сезонные программы у Байкала.
+            Выбирайте событие, смотрите подробности и переходите к записи.
           </p>
-          <a class="button button-primary" href="#schedule">РЎРјРѕС‚СЂРµС‚СЊ СЃРѕР±С‹С‚РёСЏ</a>
+          <a class="button button-primary" href="#schedule">Смотреть события</a>
         </div>
-        <div class="events-page-hero__media" aria-label="Р‘Р°Р№РєР°Р» Рё С‚РµСЂСЂРёС‚РѕСЂРёСЏ РєРѕРјРїР»РµРєСЃР°"></div>
+        <div class="events-page-hero__media" aria-label="Байкал и территория комплекса"></div>
       </section>
 
       <section class="events-schedule" id="schedule">
-        <div class="events-mode-bar" aria-label="Р Р°Р·РґРµР» Р°С„РёС€Рё">
-          <span class="is-active">Р’СЃРµ СЃРѕР±С‹С‚РёСЏ</span>
+        <div class="events-mode-bar" aria-label="Раздел афиши">
+          <span class="is-active">Все события</span>
         </div>
 
         <div class="events-schedule__heading">
           <div>
-            <p class="section-kicker">Р Р°СЃРїРёСЃР°РЅРёРµ</p>
-            <h2>Р’СЃРµ СЃРѕР±С‹С‚РёСЏ</h2>
+            <p class="section-kicker">Расписание</p>
+            <h2>Все события</h2>
           </div>
         </div>
 
@@ -92,7 +93,7 @@ const eventsFeedUrl = import.meta.env.PUBLIC_EVENTS_SHEET_CSV_URL || "";
                   <h3>{event.title}</h3>
                   <p>{event.text}</p>
                   <div class="event-time"><span aria-hidden="true"></span>{event.time}</div>
-                  <a href={event.url || `${home}#booking`} target={event.url ? "_blank" : undefined} rel={event.url ? "noreferrer" : undefined}>РџРѕРґСЂРѕР±РЅРµРµ <span aria-hidden="true">в†’</span></a>
+                  <a href={event.url || `${home}#booking`} target={event.url ? "_blank" : undefined} rel={event.url ? "noreferrer" : undefined}>Подробнее <span aria-hidden="true">→</span></a>
                 </div>
               </article>
             );
@@ -106,87 +107,85 @@ const eventsFeedUrl = import.meta.env.PUBLIC_EVENTS_SHEET_CSV_URL || "";
     <footer class="footer" id="contacts">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a class="logo" href={home} aria-label="РњРѕС‘ РџСЂРёР±Р°Р№РєР°Р»СЊРµ">
+          <a class="logo" href={home} aria-label="Моё Прибайкалье">
             <span class="logo-image" aria-hidden="true"></span>
           </a>
 
           <address class="contacts-list">
             <a href="https://yandex.ru/maps/?text=%D1%83%D0%BB.%20%D0%91%D0%B5%D1%80%D0%B5%D0%B3%D0%BE%D0%B2%D0%B0%D1%8F%202%D0%91%2C%20%D1%81%D0%B5%D0%BB%D0%BE%20%D0%93%D1%80%D0%B5%D0%BC%D1%8F%D1%87%D0%B8%D0%BD%D1%81%D0%BA%2C%20%D0%9F%D1%80%D0%B8%D0%B1%D0%B0%D0%B9%D0%BA%D0%B0%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%B9%20%D1%80%D0%B0%D0%B9%D0%BE%D0%BD%2C%20%D0%A0%D0%B5%D1%81%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D0%BA%D0%B0%20%D0%91%D1%83%D1%80%D1%8F%D1%82%D0%B8%D1%8F" target="_blank" rel="noreferrer">
-              <span aria-hidden="true">вЊ–</span>
-              СѓР». Р‘РµСЂРµРіРѕРІР°СЏ 2Р‘,<br />СЃРµР»Рѕ Р“СЂРµРјСЏС‡РёРЅСЃРє,<br />РџСЂРёР±Р°Р№РєР°Р»СЊСЃРєРёР№ СЂР°Р№РѕРЅ,<br />Р РµСЃРїСѓР±Р»РёРєР° Р‘СѓСЂСЏС‚РёСЏ
+              <span aria-hidden="true">⌖</span>
+              ул. Береговая 2Б,<br />село Гремячинск,<br />Прибайкальский район,<br />Республика Бурятия
             </a>
             <a href="tel:+79247761161">
-              <span aria-hidden="true">вЋ</span>
+              <span aria-hidden="true">☎</span>
               +7 (924) 776-1161
             </a>
             <a href="mailto:brcbs@bk.ru">
-              <span aria-hidden="true">вњ‰</span>
+              <span aria-hidden="true">✉</span>
               brcbs@bk.ru
             </a>
           </address>
         </div>
 
-        <nav class="footer-nav" aria-label="РќР°РІРёРіР°С†РёСЏ РІ РїРѕРґРІР°Р»Рµ">
+        <nav class="footer-nav" aria-label="Навигация в подвале">
           <div>
-            <a class="footer-nav-title" href={`${home}#about`}>Рћ РјРµСЃС‚Рµ</a>
-            <a href={`${home}#about`}>РљРѕРјР°РЅРґР°</a>
-            <a href={`${home}#about`}>Р”РѕРєСѓРјРµРЅС‚С‹</a>
+            <a class="footer-nav-title" href={`${home}#about`}>О месте</a>
+            <a href={`${home}#about`}>Команда</a>
+            <a href={`${home}#about`}>Документы</a>
           </div>
           <div>
-            <a class="footer-nav-title" href={asset("/services")}>РЈСЃР»СѓРіРё</a>
-            <a href={asset("/services#stay")}>РџСЂРѕР¶РёРІР°РЅРёРµ</a>
-            <a href={asset("/services#bath")}>Р‘Р°РЅРё</a>
-            <a href={asset("/services#food")}>РџРёС‚Р°РЅРёРµ</a>
+            <a class="footer-nav-title" href={asset("/services")}>Услуги</a>
+            <a href={asset("/services#stay")}>Проживание</a>
+            <a href={asset("/services#bath")}>Бани</a>
+            <a href={asset("/services#food")}>Питание</a>
           </div>
           <div>
-            <a class="footer-nav-title" href={asset("/history")}>РСЃС‚РѕСЂРёСЏ</a>
-            <a href={asset("/history#chronicle")}>Р¤РѕС‚РѕС…СЂРѕРЅРёРєР°</a>
-            <a href={asset("/history#people")}>Р›СЋРґРё Рё С‚СЂР°РґРёС†РёРё</a>
+            <a class="footer-nav-title" href={asset("/history")}>История</a>
+            <a href={asset("/history#chronicle")}>Фотохроника</a>
+            <a href={asset("/history#people")}>Люди и традиции</a>
           </div>
           <div>
-            <a class="footer-nav-title" href={asset("/press")}>РџСЂРµСЃСЃР° Рѕ РЅР°СЃ</a>
-            <a href={asset("/press#news")}>РќРѕРІРѕСЃС‚Рё</a>
-            <a href={asset("/press#publications")}>РџСѓР±Р»РёРєР°С†РёРё</a>
-            <a href={asset("/press#media")}>РЎРњР Рѕ РЅР°СЃ</a>
+            <a class="footer-nav-title" href={asset("/press")}>Пресса о нас</a>
+            <a href={asset("/press#news")}>Новости</a>
+            <a href={asset("/press#publications")}>Публикации</a>
+            <a href={asset("/press#media")}>СМИ о нас</a>
           </div>
           <div>
-            <a class="footer-nav-title" href={`${home}#gallery`}>Р¤РѕС‚РѕРіР°Р»РµСЂРµСЏ</a>
-            <a href={`${home}#gallery`}>РџСЂРёСЂРѕРґР° Р‘Р°Р№РєР°Р»Р°</a>
-            <a href={`${home}#gallery`}>Р’СЂРµРјРµРЅР° РіРѕРґР°</a>
+            <a class="footer-nav-title" href={`${home}#gallery`}>Фотогалерея</a>
+            <a href={`${home}#gallery`}>Природа Байкала</a>
+            <a href={`${home}#gallery`}>Времена года</a>
           </div>
           <div>
-            <a class="footer-nav-title" href="#contacts">РљРѕРЅС‚Р°РєС‚С‹</a>
-            <a href="https://yandex.ru/maps/?text=%D1%83%D0%BB.%20%D0%91%D0%B5%D1%80%D0%B5%D0%B3%D0%BE%D0%B2%D0%B0%D1%8F%202%D0%91%2C%20%D1%81%D0%B5%D0%BB%D0%BE%20%D0%93%D1%80%D0%B5%D0%BC%D1%8F%D1%87%D0%B8%D0%BD%D1%81%D0%BA%2C%20%D0%9F%D1%80%D0%B8%D0%B1%D0%B0%D0%B9%D0%BA%D0%B0%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%B9%20%D1%80%D0%B0%D0%B9%D0%BE%D0%BD%2C%20%D0%A0%D0%B5%D1%81%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D0%BA%D0%B0%20%D0%91%D1%83%D1%80%D1%8F%D1%82%D0%B8%D1%8F" target="_blank" rel="noreferrer">РљР°Рє РґРѕР±СЂР°С‚СЊСЃСЏ</a>
-            <a href="tel:+79247761161">РљРѕРЅС‚Р°РєС‚С‹</a>
+            <a class="footer-nav-title" href="#contacts">Контакты</a>
+            <a href="https://yandex.ru/maps/?text=%D1%83%D0%BB.%20%D0%91%D0%B5%D1%80%D0%B5%D0%B3%D0%BE%D0%B2%D0%B0%D1%8F%202%D0%91%2C%20%D1%81%D0%B5%D0%BB%D0%BE%20%D0%93%D1%80%D0%B5%D0%BC%D1%8F%D1%87%D0%B8%D0%BD%D1%81%D0%BA%2C%20%D0%9F%D1%80%D0%B8%D0%B1%D0%B0%D0%B9%D0%BA%D0%B0%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%B9%20%D1%80%D0%B0%D0%B9%D0%BE%D0%BD%2C%20%D0%A0%D0%B5%D1%81%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D0%BA%D0%B0%20%D0%91%D1%83%D1%80%D1%8F%D1%82%D0%B8%D1%8F" target="_blank" rel="noreferrer">Как добраться</a>
+            <a href="tel:+79247761161">Контакты</a>
             <a href="mailto:brcbs@bk.ru">Обратная связь</a>
           </div>
         </nav>
       </div>
 
       <div class="footer-bottom">
-        <p>В© 2026 РњРѕС‘ РџСЂРёР±Р°Р№РєР°Р»СЊРµ<br />РљСѓР»СЊС‚СѓСЂРЅРѕ-С‚СѓСЂРёСЃС‚РёС‡РµСЃРєРёР№ С†РµРЅС‚СЂ</p>
+        <p>© 2026 Моё Прибайкалье<br />Культурно-туристический центр</p>
       </div>
     </footer>
 
+    <BookingModal />
+
     <div class="mobile-menu" aria-hidden="true">
       <div class="mobile-menu__overlay" data-menu-close></div>
-      <nav class="mobile-menu__panel" aria-label="РњРѕР±РёР»СЊРЅРѕРµ РјРµРЅСЋ">
-        <button class="mobile-menu__close" type="button" aria-label="Р—Р°РєСЂС‹С‚СЊ РјРµРЅСЋ" data-menu-close>
+      <nav class="mobile-menu__panel" aria-label="Мобильное меню">
+        <button class="mobile-menu__close" type="button" aria-label="Закрыть меню" data-menu-close>
           <span></span>
           <span></span>
         </button>
-        <a href={`${home}#about`} data-menu-close>Рћ РјРµСЃС‚Рµ</a>
-        <a href={asset("/services")} data-menu-close>РЈСЃР»СѓРіРё</a>
-        <a href={asset("/menu")} data-menu-close>РљР°С„Рµ</a>
-        <a href={asset("/history")} data-menu-close>РСЃС‚РѕСЂРёСЏ</a>
-        <a href={asset("/events")} data-menu-close>РђС„РёС€Р°</a>
-        <a href={asset("/press")} data-menu-close>РџСЂРµСЃСЃР° Рѕ РЅР°СЃ</a>
-        <a href={`${home}#gallery`} data-menu-close>Р“Р°Р»РµСЂРµСЏ</a>
-        <a href={`${home}#contacts`} data-menu-close>РљРѕРЅС‚Р°РєС‚С‹</a>
-        <a class="mobile-menu__booking" href={`${home}#booking`} data-menu-close>Р—Р°Р±СЂРѕРЅРёСЂРѕРІР°С‚СЊ</a>
-        <div class="mobile-menu__contacts">
-          <a href="tel:+79247761161" data-menu-close>+7 (924) 776-1161</a>
-        </div>
+        <a href={`${home}#about`} data-menu-close>О месте</a>
+        <a href={asset("/services")} data-menu-close>Услуги</a>
+        <a href={asset("/menu")} data-menu-close>Кафе</a>
+        <a href={asset("/history")} data-menu-close>История</a>
+        <a href={asset("/events")} data-menu-close>Афиша</a>
+        <a href={asset("/press")} data-menu-close>Пресса о нас</a>
+        <a href={`${home}#gallery`} data-menu-close>Галерея</a>
+        <a href={`${home}#contacts`} data-menu-close>Контакты</a>
       </nav>
     </div>
 

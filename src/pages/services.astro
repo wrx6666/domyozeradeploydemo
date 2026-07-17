@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import BookingModal from "../components/BookingModal.astro";
 
 const assetBase = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
@@ -608,6 +609,8 @@ const serviceCards = [
       </div>
     </footer>
 
+    <BookingModal />
+
     <div class="mobile-menu" aria-hidden="true">
       <div class="mobile-menu__overlay" data-menu-close></div>
       <nav class="mobile-menu__panel" aria-label="Мобильное меню">
@@ -623,10 +626,6 @@ const serviceCards = [
         <a href={asset("/press")} data-menu-close>Пресса о нас</a>
         <a href={`${home}#gallery`} data-menu-close>Галерея</a>
         <a href={`${home}#contacts`} data-menu-close>Контакты</a>
-        <a class="mobile-menu__booking" href={`${home}#booking`} data-menu-close>Забронировать</a>
-        <div class="mobile-menu__contacts">
-          <a href="tel:+79247761161" data-menu-close>+7 (924) 776-1161</a>
-        </div>
       </nav>
     </div>
 

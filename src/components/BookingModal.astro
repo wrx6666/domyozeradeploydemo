@@ -1,0 +1,100 @@
+<div class="booking-modal" id="booking-modal" aria-hidden="true">
+  <div class="booking-modal__overlay" data-booking-close></div>
+  <section
+    class="booking-modal__dialog"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="booking-modal-title"
+  >
+    <button class="booking-modal__close" type="button" aria-label="Закрыть окно" data-booking-close>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="booking-modal__content">
+      <p class="booking-modal__kicker">Бронирование</p>
+      <h2 id="booking-modal-title">Забронировать<br />отдых на Байкале</h2>
+      <div class="booking-modal__divider" aria-hidden="true"></div>
+      <p class="booking-modal__text">
+        Свяжитесь с нами по телефону - подскажем свободные даты, варианты проживания и стоимость.
+      </p>
+
+      <a class="booking-modal__phone" href="tel:+79294740434" aria-label="Позвонить по номеру +7 929 474-0434">
+        <span aria-hidden="true"></span>
+        +7 (929) 474-0434
+      </a>
+
+      <div class="booking-modal__actions">
+        <a class="booking-modal__call" href="tel:+79294740434">Позвонить сейчас</a>
+        <a class="booking-modal__whatsapp" href="https://t.me/NataliaShemyakina" target="_blank" rel="noreferrer">
+          <span aria-hidden="true"></span>
+          написать в telegram
+        </a>
+        <a class="booking-modal__max" href="https://web.max.ru/515873918" target="_blank" rel="noreferrer">
+          <span aria-hidden="true"></span>
+          написать в max
+        </a>
+        <a class="booking-modal__vk" href="https://vk.com/im/convo/-225924674?entrypoint=list_all" target="_blank" rel="noreferrer">
+          <span aria-hidden="true"></span>
+          написать вконтакте
+        </a>
+      </div>
+    </div>
+
+    <div class="booking-modal__meta">
+      <span class="booking-modal__time">Ежедневно с 9:00 до 21:00</span>
+      <span class="booking-modal__location">ул. Береговая 2Б, село Гремячинск</span>
+    </div>
+  </section>
+</div>
+
+<script is:inline>
+  (() => {
+    const bookingModal = document.querySelector(".booking-modal");
+    if (!bookingModal) return;
+
+    const bookingOpenButtons = document.querySelectorAll(
+      "[data-booking-open], a[href='#booking-modal'], a[href$='#booking']"
+    );
+    const bookingCloseButtons = document.querySelectorAll("[data-booking-close]");
+    const menuOpenButtons = document.querySelectorAll("[data-menu-open]");
+
+    const closeMobileMenu = () => {
+      const mobileMenu = document.querySelector(".mobile-menu");
+      mobileMenu?.classList.remove("is-open");
+      mobileMenu?.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("menu-open");
+      menuOpenButtons.forEach((button) => button.setAttribute("aria-expanded", "false"));
+    };
+
+    const openBookingModal = () => {
+      closeMobileMenu();
+      bookingModal.classList.add("is-open");
+      bookingModal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("modal-open");
+    };
+
+    const closeBookingModal = () => {
+      bookingModal.classList.remove("is-open");
+      bookingModal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("modal-open");
+    };
+
+    bookingOpenButtons.forEach((button) => {
+      button.addEventListener("click", (event) => {
+        event.preventDefault();
+        openBookingModal();
+      });
+    });
+
+    bookingCloseButtons.forEach((button) => {
+      button.addEventListener("click", closeBookingModal);
+    });
+
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && bookingModal.classList.contains("is-open")) {
+        closeBookingModal();
+      }
+    });
+  })();
+</script>

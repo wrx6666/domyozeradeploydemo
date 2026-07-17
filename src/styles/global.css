@@ -357,28 +357,6 @@ a {
   transform: rotate(-45deg);
 }
 
-.mobile-menu__booking {
-  justify-content: center;
-  min-height: 48px;
-  margin-top: 18px;
-  border: 0;
-  border-radius: 8px;
-  color: #fff !important;
-  background: #12372d;
-}
-
-.mobile-menu__contacts {
-  display: grid;
-  gap: 8px;
-  margin-top: 18px;
-}
-
-.mobile-menu__contacts a {
-  color: #3f4a53;
-  font-size: 13px;
-  font-weight: 700;
-}
-
 .hero-content {
   position: relative;
   z-index: 2;
@@ -5815,10 +5793,9 @@ a {
 
 .press-page-hero__content h1,
 .press-feature__body h2,
-.press-materials__heading h2,
-.press-note h2 {
+.press-materials__heading h2 {
   margin: 0;
-  color: #12372d;
+  color: #101010;
   font-family: var(--font-serif);
   font-weight: 500;
   letter-spacing: 0;
@@ -5833,7 +5810,7 @@ a {
 .press-page-hero__content > p:not(.section-kicker) {
   max-width: 520px;
   margin: 18px 0 0;
-  color: #28313a;
+  color: #101010;
   font-size: clamp(14px, 1vw, 16px);
   line-height: 1.55;
   font-weight: 500;
@@ -5892,7 +5869,7 @@ a {
 .press-materials__heading > p {
   max-width: 650px;
   margin: 0;
-  color: #34424b;
+  color: #101010;
   font-size: 15px;
   line-height: 1.6;
   font-weight: 500;
@@ -5966,7 +5943,7 @@ a {
 .press-feature__body > p {
   max-width: 620px;
   margin: 16px 0 0;
-  color: #34424b;
+  color: #101010;
   font-size: 14px;
   line-height: 1.62;
   font-weight: 500;
@@ -6042,40 +6019,6 @@ a {
   padding-top: 20px;
 }
 
-.press-note {
-  display: grid;
-  grid-template-columns: minmax(360px, 0.78fr) minmax(480px, 1fr);
-  gap: clamp(34px, 6vw, 100px);
-  align-items: center;
-  max-width: 1500px;
-  margin: 0 auto clamp(70px, 7vw, 112px);
-  padding: clamp(34px, 4vw, 54px);
-  border-radius: 8px;
-  background: #12372d;
-  box-shadow: 0 22px 54px rgba(18, 55, 45, 0.14);
-  color: #fffaf2;
-}
-
-.press-note .section-kicker {
-  color: #d9a06b;
-}
-
-.press-note h2 {
-  max-width: 620px;
-  color: #fffaf2;
-  font-size: clamp(34px, 3.4vw, 58px);
-  line-height: 1.03;
-}
-
-.press-note > p {
-  max-width: 700px;
-  margin: 0;
-  color: rgba(255, 250, 242, 0.86);
-  font-size: 17px;
-  line-height: 1.66;
-  font-weight: 500;
-}
-
 @media (max-width: 1180px) {
   .press-page-hero {
     background:
@@ -6084,8 +6027,7 @@ a {
   }
 
   .press-feature__card,
-  .press-materials__heading,
-  .press-note {
+  .press-materials__heading {
     grid-template-columns: 1fr;
   }
 
@@ -6129,10 +6071,6 @@ a {
     grid-template-columns: 1fr;
   }
 
-  .press-note {
-    margin: 0 22px 62px;
-    padding: 30px 22px;
-  }
 }
 
 .events-page {
@@ -7925,13 +7863,6 @@ a {
   background: #a16c44;
 }
 
-.cafe-menu-hero__divider::after {
-  content: "?";
-  font-family: var(--font-serif);
-  font-size: 13px;
-  line-height: 1;
-}
-
 .cafe-menu-hero__text {
   max-width: 600px;
   margin: 0;
@@ -8328,32 +8259,47 @@ a {
 
 @media (max-width: 860px) {
   .cafe-menu-page {
-    padding: 0 0 52px;
+    padding: 0 0 40px;
   }
 
   .cafe-menu-hero {
-    min-height: 560px;
+    min-height: 430px;
     align-items: flex-start;
   }
 
   .cafe-menu-hero__copy {
-    width: calc(100% - 36px);
+    width: calc(100% - 40px);
     margin: 0 auto;
-    padding-top: 44px;
+    padding: 38px 0 46px;
   }
 
   .cafe-menu-hero h1 {
-    font-size: clamp(44px, 14vw, 70px);
+    max-width: 330px;
+    margin: 8px 0 14px;
+    font-size: clamp(46px, 15vw, 58px);
+    line-height: 0.96;
   }
 
   .cafe-menu-hero__lead,
   .cafe-menu-hero__text {
-    max-width: 420px;
+    max-width: 330px;
     font-size: 14px;
+    line-height: 1.45;
   }
 
   .cafe-menu-hero__divider {
-    width: 220px;
+    width: 210px;
+    margin: 14px 0;
+  }
+
+  .cafe-menu-hero__photo img:not(figcaption img) {
+    object-position: 70% 50%;
+  }
+
+  .cafe-menu-hero__photo::after {
+    background:
+      linear-gradient(90deg, #fbf6ee 0%, rgba(251, 246, 238, 0.97) 48%, rgba(251, 246, 238, 0.72) 68%, rgba(251, 246, 238, 0.22) 100%),
+      linear-gradient(180deg, rgba(251, 246, 238, 0.15), rgba(251, 246, 238, 0.64));
   }
 
   .cafe-menu-hero__features,
@@ -8367,10 +8313,64 @@ a {
 
   .cafe-menu-sidebar {
     position: static;
+    min-width: 0;
   }
 
   .cafe-menu-sidebar nav {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 16px 0 0;
+    padding: 0;
+    overflow: visible;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .cafe-menu-sidebar nav button {
+    display: inline-flex;
+    flex: 0 1 auto;
+    grid-template-columns: none;
+    gap: 8px;
+    min-height: 44px;
+    padding: 0 12px;
+    border: 1px solid rgba(90, 66, 45, 0.16);
+    border-radius: 999px;
+    background: #fffaf2;
+    white-space: nowrap;
+  }
+
+  .cafe-menu-sidebar nav button span {
+    min-height: auto;
+    padding: 0;
+    border-radius: 0;
+  }
+
+  .cafe-menu-sidebar nav button:hover span,
+  .cafe-menu-sidebar nav button.is-active span {
+    background: transparent;
+  }
+
+  .cafe-menu-sidebar nav button.is-active {
+    border-color: #0e3a30;
+    color: #fffaf2;
+    background: #0e3a30;
+  }
+
+  .cafe-menu-sidebar nav button.is-active span {
+    color: inherit;
+  }
+
+  .cafe-menu-sidebar nav img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .cafe-menu-sidebar__download {
+    min-height: 44px;
+    margin-top: 12px;
+    font-size: 12px;
   }
 
   .cafe-menu-list--two,
@@ -8398,23 +8398,62 @@ a {
     display: grid;
   }
 
-  .cafe-menu-hero__features,
-  .cafe-menu-sidebar nav {
+  .cafe-menu-hero__features {
     grid-template-columns: 1fr;
   }
 
   .cafe-menu-board {
-    padding: 18px;
+    width: calc(100% - 28px);
+    margin-top: -14px;
+    padding: 18px 14px 20px;
     border-radius: 14px;
+  }
+
+  .cafe-menu-sidebar h2,
+  .cafe-menu-section h2 {
+    font-size: 28px;
+  }
+
+  .cafe-menu-section__head {
+    display: grid;
+    gap: 8px;
+    margin-top: 4px;
+  }
+
+  .cafe-menu-section__head > div {
+    gap: 10px;
+  }
+
+  .cafe-menu-section__head img {
+    width: 34px;
+    height: 34px;
+  }
+
+  .cafe-menu-section__head > span {
+    justify-self: start;
+    white-space: normal;
   }
 
   .cafe-menu-list article {
     grid-template-columns: 1fr;
     gap: 8px;
+    min-height: 0;
+    padding: 14px;
   }
 
   .cafe-menu-list strong {
     justify-self: start;
+    font-size: 17px;
+  }
+
+  .cafe-menu-list h3 {
+    font-size: 15px;
+    line-height: 1.25;
+  }
+
+  .cafe-menu-list p {
+    font-size: 13px;
+    line-height: 1.45;
   }
 }
 
